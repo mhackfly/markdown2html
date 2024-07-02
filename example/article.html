@@ -1,0 +1,1876 @@
+<!DOCTYPE html>
+<html lang="fr">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width" name="viewport"/>
+  <style>
+   @import url(https://fonts.googleapis.com/css2?family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap);
+@import url(https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap);
+@import url(https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap);
+@import url(https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap);
+@import url(https://fonts.googleapis.com/css2?family=Play:wght@400;700&display=swap);
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scrollbar-width: none;
+    ::-webkit-scrollbar {
+        width: 0px;
+        height: 0px;
+    }
+    height: auto;
+}
+
+body {
+    background-color: #1B1E3C;
+    padding-left: 20px;
+    padding-right: 10px;
+    line-height: 1.6;
+    font-family: "Ubuntu Mono";
+    font-weight: 500;
+    font-size: 14px;
+    text-decoration: none;
+    height: auto;
+}
+
+pre { line-height: 125%; font-size: 10px; font-weight: 300; padding: 20px; text-wrap: wrap;}
+td.linenos .normal { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+span.linenos { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+td.linenos .special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+.codehilite .hll { background-color: #4f424c }
+.codehilite { border-radius: 20px; width: 80%; margin: auto; background-color: #171932;}
+.codehilite .c { color: #776e71 }
+.codehilite .err { color: #ef6155 }
+.codehilite .k { color: #815ba4 }
+.codehilite .l { color: #f99b15 }
+.codehilite .n { color: #e7e9db }
+.codehilite .o { color: #5bc4bf }
+.codehilite .p { color: #e7e9db }
+.codehilite .ch { color: #776e71 }
+.codehilite .cm { color: #776e71 }
+.codehilite .cp { color: #776e71 }
+.codehilite .cpf { color: #776e71 }
+.codehilite .c1 { color: #776e71 }
+.codehilite .cs { color: #776e71 }
+.codehilite .gd { color: #ef6155 }
+.codehilite .ge { font-style: italic }
+.codehilite .ges { font-weight: bold; font-style: italic }
+.codehilite .gh { color: #e7e9db; font-weight: bold }
+.codehilite .gi { color: #48b685 }
+.codehilite .gp { color: #776e71; font-weight: bold }
+.codehilite .gs { font-weight: bold }
+.codehilite .gu { color: #5bc4bf; font-weight: bold }
+.codehilite .kc { color: #815ba4 }
+.codehilite .kd { color: #815ba4 }
+.codehilite .kn { color: #5bc4bf }
+.codehilite .kp { color: #815ba4 }
+.codehilite .kr { color: #815ba4 }
+.codehilite .kt { color: #fec418 }
+.codehilite .ld { color: #48b685 }
+.codehilite .m { color: #f99b15 }
+.codehilite .s { color: #48b685 }
+.codehilite .na { color: #06b6ef }
+.codehilite .nb { color: #e7e9db }
+.codehilite .nc { color: #fec418 }
+.codehilite .no { color: #ef6155 }
+.codehilite .nd { color: #5bc4bf }
+.codehilite .ni { color: #e7e9db }
+.codehilite .ne { color: #ef6155 }
+.codehilite .nf { color: #06b6ef }
+.codehilite .nl { color: #e7e9db }
+.codehilite .nn { color: #fec418 }
+.codehilite .nx { color: #06b6ef }
+.codehilite .py { color: #e7e9db }
+.codehilite .nt { color: #5bc4bf }
+.codehilite .nv { color: #ef6155 }
+.codehilite .ow { color: #5bc4bf }
+.codehilite .pm { color: #e7e9db }
+.codehilite .w { color: #e7e9db }
+.codehilite .mb { color: #f99b15 }
+.codehilite .mf { color: #f99b15 }
+.codehilite .mh { color: #f99b15 }
+.codehilite .mi { color: #f99b15 }
+.codehilite .mo { color: #f99b15 }
+.codehilite .sa { color: #48b685 }
+.codehilite .sb { color: #48b685 }
+.codehilite .sc { color: #e7e9db }
+.codehilite .dl { color: #48b685 }
+.codehilite .sd { color: #776e71 }
+.codehilite .s2 { color: #48b685 }
+.codehilite .se { color: #f99b15 }
+.codehilite .sh { color: #48b685 }
+.codehilite .si { color: #f99b15 }
+.codehilite .sx { color: #48b685 }
+.codehilite .sr { color: #48b685 }
+.codehilite .s1 { color: #48b685 }
+.codehilite .ss { color: #48b685 }
+.codehilite .bp { color: #e7e9db }
+.codehilite .fm { color: #06b6ef }
+.codehilite .vc { color: #ef6155 }
+.codehilite .vg { color: #ef6155 }
+.codehilite .vi { color: #ef6155 }
+.codehilite .vm { color: #ef6155 }
+.codehilite .il { color: #f99b15 }
+p {
+	color: #9AB8C7;
+}
+
+
+section { 
+	color: #595959;
+	font-family: "Outfit";
+	font-optical-sizing: auto;
+	font-weight: 700;
+	font-size: 24px;
+}
+
+h4 {
+	color: #006F00;
+	font-family: "Outfit";
+	font-optical-sizing: auto;
+	font-weight: 500;
+	font-size: 22px;
+}
+
+a {
+	font-size: 16px;
+	text-decoration: none;
+	color: #1B5478;
+	font-weight: 700;
+	font-style: italic;
+}
+
+img[alt=snakles_1] {
+	width: 190px;
+	border-top: 5px solid black;
+	border-bottom: 2px solid black;
+	border-left: 5px solid black;
+	border-right: 2px solid black;
+	border-radius: 10px;
+}
+
+img[alt=snakles_2] {
+	width: 190px;
+	border: 4px solid black;
+	border-radius: 10px;
+}
+
+blockquote {
+	margin-left: 25px;
+	color: #9AB8C7;
+}
+
+sm {
+	font-size: 10px;
+	color: gray;
+	font-style: italic;
+}
+
+code {
+	font-family: monospace;
+	font-size: 90%;
+	color: white;
+}
+  </style>
+ </head>
+ <body>
+  <section id="description">
+   Description
+  </section>
+  <p>
+   <br/>
+  </p>
+  <blockquote>
+   <p>
+    <strong>
+     <code>
+      markdown2html.py
+     </code>
+    </strong>
+    is a Python script that converts a Markdown file to HTML.
+   </p>
+   <blockquote>
+    <ul>
+     <li>
+      it transforms
+      <strong>
+       <code>
+        &lt;h3&gt;
+       </code>
+      </strong>
+      tags into
+      <strong>
+       <code>
+        &lt;a href&gt;
+       </code>
+      </strong>
+      tags by creating sections with unique identifiers and adds these anchors in a
+      <strong>
+       <code>
+        sections.html
+       </code>
+       file
+      </strong>
+      . In this index file you can add links to files by inserting the '-' sign in front of the file name:
+Examples:
+      <strong>
+       <code>
+        [-my PDF](document.pdf), [-my html](file.html), [-my text](document.txt), [-my code](code.py)
+       </code>
+      </strong>
+     </li>
+     <li>
+      it identifies special code blocks delimited by
+      <strong>
+       <code>
+        &lt;!--program&gt;
+       </code>
+      </strong>
+      and
+      <strong>
+       <code>
+        &lt;program --&gt;
+       </code>
+      </strong>
+      These blocks define a code display area with
+      <a href="#program-tags">
+       attributes
+      </a>
+      and highlight them with
+      <strong>
+       <code>
+        pygmentize
+       </code>
+      </strong>
+      a code syntax highlighting tool.
+     </li>
+     <li>
+      it creates the HTML file by integrating the files
+      <strong>
+       <code>
+        markdown2html.css
+       </code>
+      </strong>
+      and
+      <strong>
+       <code>
+        markdown.css
+       </code>
+      </strong>
+      <blockquote>
+       <ul>
+        <li>
+         <strong>
+          <code>
+           markdown2html.css
+          </code>
+         </strong>
+         defines the style of the HTML page
+        </li>
+        <li>
+         <strong>
+          <code>
+           markdown.css
+          </code>
+         </strong>
+         defines styles for the markdown file
+        </li>
+       </ul>
+      </blockquote>
+     </li>
+    </ul>
+   </blockquote>
+  </blockquote>
+  <p>
+   <br/>
+  </p>
+  <section id="usage">
+   Usage
+  </section>
+  <p>
+   <br/>
+  </p>
+  <blockquote>
+   <p>
+    Create a directory with the files
+    <strong>
+     <code>
+      markdown2html.py, markdown2html.css, markdown.css
+     </code>
+    </strong>
+    <br/>
+    Run the Python file with your Markdown file:
+    <br/>
+    <strong>
+     <code>
+      python3 markdown2html.py my_file.md
+     </code>
+    </strong>
+    <br/>
+    A directory
+    <strong>
+     <code>
+      my_file
+     </code>
+    </strong>
+    is created, with 3 files inside:
+    <br/>
+    <strong>
+     <code>
+      article.html:
+     </code>
+    </strong>
+    the main HTML file.
+    <br/>
+    <strong>
+     <code>
+      article.md:
+     </code>
+    </strong>
+    a copy of the Markdown file.
+    <br/>
+    <strong>
+     <code>
+      sections.html:
+     </code>
+    </strong>
+    an index of links created with the tags
+    <code>
+     ### and [-...]()
+    </code>
+    .
+    <br/>
+    You can optionally modify the CSS files.
+   </p>
+  </blockquote>
+  <p>
+   <br/>
+  </p>
+  <section id="dependencies">
+   Dependencies
+  </section>
+  <p>
+   <br/>
+  </p>
+  <blockquote>
+   <p>
+    Pygments:
+    <br/>
+    <a href="https://pygments.org/download/" target="_blank">
+     Download and install
+    </a>
+    or with
+    <strong>
+     <code>
+      pip install Pygments
+     </code>
+    </strong>
+    <br/>
+    <sm>
+     (Usage example: pygmentize -S paraiso-dark -f html -a .codehilite)
+    </sm>
+   </p>
+  </blockquote>
+  <p>
+   <br/>
+  </p>
+  <section id="source-code">
+   Source code
+  </section>
+  <p>
+   <br/>
+  </p>
+  <blockquote>
+   <p>
+    <a href="code_markdown2html.py.html">
+     markdown2html.py
+    </a>
+    : converts the Markdown file to HTML
+    <br/>
+    <a href="code_markdown2html.css.html">
+     markdown2html.css
+    </a>
+    : defines the style of the HTML page
+    <br/>
+    <a href="code_markdown.css.html">
+     markdown.css
+    </a>
+    : defines styles for the markdown file
+    <br/>
+    <sm>
+     (Theme code: Dracula)
+    </sm>
+   </p>
+  </blockquote>
+  <p>
+   <br/>
+  </p>
+  <section id="program-tags">
+   Program tags
+  </section>
+  <p>
+   <br/>
+  </p>
+  <blockquote>
+   <p>
+    Attributes must be placed between 2 tags
+    <strong>
+     <code>
+      &lt;!-- program&gt; &lt;program --&gt;
+     </code>
+    </strong>
+    <br/>
+    The first set of
+    <strong>
+     <code>
+      number-...
+     </code>
+    </strong>
+    attributes customizes the line numbers.
+    <br/>
+    The series
+    <strong>
+     <code>
+      box-...
+     </code>
+    </strong>
+    the box and the code.
+    <br/>
+    the last attributes in the list
+    <strong>
+     <code>
+      language
+     </code>
+    </strong>
+    and
+    <strong>
+     <code>
+      theme
+     </code>
+    </strong>
+    correspond to the options
+    <br/>
+    from
+    <strong>
+     <code>
+      pygmentize
+     </code>
+    </strong>
+    ,
+    <a href="https://pygments.org/languages/" target="_blank">
+     languages
+    </a>
+    and
+    <a href="https://pygments.org/styles/" target="_blank">
+     styles
+    </a>
+    .
+    <br/>
+    In the
+    <strong>
+     <code>
+      &lt;Program&gt; tags
+     </code>
+    </strong>
+    section, when specifying the
+    <strong>
+     <code>
+      code
+     </code>
+    </strong>
+    attribute,
+    <br/>
+    you can either provide the name of an existing file or write the code directly.
+    <br/>
+    For example,
+    <strong>
+     <code>
+      code: code_example_1.py
+     </code>
+    </strong>
+    assumes that
+    <strong>
+     <code>
+      code_example_1.py
+     </code>
+    </strong>
+    <br/>
+    is an existing file in the same directory.
+    <br/>
+    If you want to write the code directly, you can do so as follows:
+   </p>
+   <p>
+    <code>
+     &lt;!-- program&gt;
+    </code>
+    <br/>
+    <code>
+     ...
+    </code>
+    <br/>
+    <code>
+     language: python
+    </code>
+    <br/>
+    <code>
+     theme: fruity
+    </code>
+    <br/>
+    <code>
+     code:
+    </code>
+    <br/>
+    <code>
+     print("Hello")
+    </code>
+    <br/>
+    <code>
+     print("World!")
+    </code>
+    <br/>
+    <code>
+     &lt;program --&gt;
+    </code>
+    <br/>
+    or
+    <br/>
+    <code>
+     &lt;!-- program&gt;
+    </code>
+    <br/>
+    <code>
+     ...
+    </code>
+    <br/>
+    <code>
+     language: js
+    </code>
+    <br/>
+    <code>
+     theme: github-dark
+    </code>
+    <br/>
+    <code>
+     code: script.js
+    </code>
+    <br/>
+    <code>
+     &lt;program --&gt;
+    </code>
+   </p>
+   <p>
+    In the "Examples" section, many attributes are listed without values.
+    <br/>
+    These attributes are optional and are used to customize the appearance of the code block.
+    <br/>
+    If an attribute is not specified, the program will use default values.
+    <br/>
+    You can experiment with different values to achieve the desired look for your code block.
+   </p>
+  </blockquote>
+  <p>
+   <br/>
+  </p>
+  <blockquote>
+   <h4>
+    Some examples
+   </h4>
+  </blockquote>
+  <p>
+   <br/>
+  </p>
+  <blockquote>
+   <blockquote>
+    <h4>
+     1 )
+    </h4>
+    <blockquote>
+     <p>
+      box-shadow: inset 10px 10px 10px rgba(0,0,0,.7);
+      <br/>
+      box-font-size: 10px
+      <br/>
+      box-font-family: Source Code Pro
+      <br/>
+      theme: fruity
+     </p>
+    </blockquote>
+   </blockquote>
+  </blockquote>
+  <p>
+   <br/>
+  </p>
+  <div class="codehilite">
+   <pre><span></span><code><span class="n">number</span><span class="o">:</span><span class="w"> </span><span class="mi">0</span>
+<span class="n">number</span><span class="o">-</span><span class="n">color</span><span class="o">:</span>
+<span class="n">number</span><span class="o">-</span><span class="n">background</span><span class="o">-</span><span class="n">color</span><span class="o">:</span>
+<span class="n">number</span><span class="o">-</span><span class="n">border</span><span class="o">:</span>
+<span class="n">number</span><span class="o">-</span><span class="n">border</span><span class="o">-</span><span class="n">radius</span><span class="o">:</span>
+<span class="n">number</span><span class="o">-</span><span class="n">padding</span><span class="o">-</span><span class="n">left</span><span class="o">-</span><span class="n">right</span><span class="o">:</span>
+<span class="n">number</span><span class="o">-</span><span class="n">margin</span><span class="o">-</span><span class="n">left</span><span class="o">:</span>
+<span class="n">number</span><span class="o">-</span><span class="n">margin</span><span class="o">-</span><span class="n">right</span><span class="o">:</span>
+<span class="n">number</span><span class="o">-</span><span class="n">font</span><span class="o">-</span><span class="n">weight</span><span class="o">:</span>
+<span class="n">box</span><span class="o">-</span><span class="n">background</span><span class="o">:</span><span class="w"> </span><span class="err">#</span><span class="mi">171932</span><span class="o">;</span>
+<span class="n">box</span><span class="o">-</span><span class="n">border</span><span class="o">:</span>
+<span class="n">box</span><span class="o">-</span><span class="n">border</span><span class="o">-</span><span class="n">radius</span><span class="o">:</span><span class="w"> </span><span class="mi">10</span><span class="n">px</span>
+<span class="n">box</span><span class="o">-</span><span class="n">shadow</span><span class="o">:</span><span class="w"> </span><span class="n">inset</span><span class="w"> </span><span class="mi">10</span><span class="n">px</span><span class="w"> </span><span class="mi">10</span><span class="n">px</span><span class="w"> </span><span class="mi">10</span><span class="n">px</span><span class="w"> </span><span class="n">rgba</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span><span class="mi">0</span><span class="o">,</span><span class="mi">0</span><span class="o">,.</span><span class="mi">7</span><span class="o">);</span>
+<span class="n">box</span><span class="o">-</span><span class="n">font</span><span class="o">-</span><span class="n">size</span><span class="o">:</span><span class="w"> </span><span class="mi">10</span><span class="n">px</span>
+<span class="n">box</span><span class="o">-</span><span class="n">font</span><span class="o">-</span><span class="n">family</span><span class="o">:</span><span class="w"> </span><span class="n">Source</span><span class="w"> </span><span class="n">Code</span><span class="w"> </span><span class="n">Pro</span>
+<span class="n">box</span><span class="o">-</span><span class="n">line</span><span class="o">-</span><span class="n">height</span><span class="o">:</span><span class="w"> </span><span class="mi">120</span><span class="o">%</span>
+<span class="n">box</span><span class="o">-</span><span class="n">width</span><span class="o">:</span><span class="w"> </span><span class="mi">80</span><span class="o">%</span>
+<span class="n">box</span><span class="o">-</span><span class="n">height</span><span class="o">:</span><span class="w"> </span><span class="mi">300</span><span class="n">px</span>
+<span class="n">box</span><span class="o">-</span><span class="n">margin</span><span class="o">-</span><span class="n">top</span><span class="o">:</span><span class="w"> </span><span class="mi">10</span><span class="n">px</span>
+<span class="n">box</span><span class="o">-</span><span class="n">margin</span><span class="o">-</span><span class="n">bottom</span><span class="o">:</span><span class="w"> </span><span class="mi">10</span><span class="n">px</span>
+<span class="n">box</span><span class="o">-</span><span class="n">margin</span><span class="o">-</span><span class="n">left</span><span class="o">:</span><span class="w"> </span><span class="mi">10</span><span class="n">px</span>
+<span class="n">box</span><span class="o">-</span><span class="n">margin</span><span class="o">-</span><span class="n">right</span><span class="o">:</span><span class="w"> </span><span class="mi">10</span><span class="n">px</span>
+<span class="n">language</span><span class="o">:</span><span class="w"> </span><span class="n">python</span>
+<span class="n">theme</span><span class="o">:</span><span class="w"> </span><span class="n">fruity</span>
+<span class="n">code</span><span class="o">:</span><span class="w"> </span><span class="n">code_example_1</span><span class="o">.</span><span class="na">py</span>
+</code></pre>
+  </div>
+  <p>
+   <br/>
+  </p>
+  <style>
+   td.linenos .normal-4c56d471-c9df-4327-afa9-6893288058a0 {color: ;background-color: ;border: ;border-radius: ;padding-left: ;padding-right: ;margin-left: ;margin-right: ;font-weight: ;}
+span.linenos { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+td.linenos .special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+.highlight-4c56d471-c9df-4327-afa9-6893288058a0 .hll { background-color: #333333 }
+.highlight-4c56d471-c9df-4327-afa9-6893288058a0 { background: #111111; color: #ffffff }
+.highlight-4c56d471-c9df-4327-afa9-6893288058a0 .c { color: #008800; font-style: italic; background-color: #0f140f } /* Comment */
+.highlight-4c56d471-c9df-4327-afa9-6893288058a0 .err { color: #ffffff } /* Error */
+.highlight-4c56d471-c9df-4327-afa9-6893288058a0 .esc { color: #ffffff } /* Escape */
+.highlight-4c56d471-c9df-4327-afa9-6893288058a0 .g { color: #ffffff } /* Generic */
+.highlight-4c56d471-c9df-4327-afa9-6893288058a0 .k { color: #fb660a; font-weight: bold } /* Keyword */
+.highlight-4c56d471-c9df-4327-afa9-6893288058a0 .l { color: #ffffff } /* Literal */
+.highlight-4c56d471-c9df-4327-afa9-6893288058a0 .n { color: #ffffff } /* Name */
+.highlight-4c56d471-c9df-4327-afa9-6893288058a0 .o { color: #ffffff } /* Operator */
+.highlight-4c56d471-c9df-4327-afa9-6893288058a0 .x { color: #ffffff } /* Other */
+.highlight-4c56d471-c9df-4327-afa9-6893288058a0 .p { color: #ffffff } /* Punctuation */
+.highlight-4c56d471-c9df-4327-afa9-6893288058a0 .ch { color: #008800; font-style: italic; background-color: #0f140f } /* Comment.Hashbang */
+.highlight-4c56d471-c9df-4327-afa9-6893288058a0 .cm { color: #008800; font-style: italic; background-color: #0f140f } /* Comment.Multiline */
+.highlight-4c56d471-c9df-4327-afa9-6893288058a0 .cp { color: #ff0007; font-weight: bold; font-style: italic; background-color: #0f140f } /* Comment.Preproc */
+.highlight-4c56d471-c9df-4327-afa9-6893288058a0 .cpf { color: #008800; font-style: italic; background-color: #0f140f } /* Comment.PreprocFile */
+.highlight-4c56d471-c9df-4327-afa9-6893288058a0 .c1 { color: #008800; font-style: italic; background-color: #0f140f } /* Comment.Single */
+.highlight-4c56d471-c9df-4327-afa9-6893288058a0 .cs { color: #008800; font-style: italic; background-color: #0f140f } /* Comment.Special */
+.highlight-4c56d471-c9df-4327-afa9-6893288058a0 .gd { color: #ffffff } /* Generic.Deleted */
+.highlight-4c56d471-c9df-4327-afa9-6893288058a0 .ge { color: #ffffff } /* Generic.Emph */
+.highlight-4c56d471-c9df-4327-afa9-6893288058a0 .ges { color: #ffffff } /* Generic.EmphStrong */
+.highlight-4c56d471-c9df-4327-afa9-6893288058a0 .gr { color: #ffffff } /* Generic.Error */
+.highlight-4c56d471-c9df-4327-afa9-6893288058a0 .gh { color: #ffffff; font-weight: bold } /* Generic.Heading */
+.highlight-4c56d471-c9df-4327-afa9-6893288058a0 .gi { color: #ffffff } /* Generic.Inserted */
+.highlight-4c56d471-c9df-4327-afa9-6893288058a0 .go { color: #444444; background-color: #222222 } /* Generic.Output */
+.highlight-4c56d471-c9df-4327-afa9-6893288058a0 .gp { color: #ffffff } /* Generic.Prompt */
+.highlight-4c56d471-c9df-4327-afa9-6893288058a0 .gs { color: #ffffff } /* Generic.Strong */
+.highlight-4c56d471-c9df-4327-afa9-6893288058a0 .gu { color: #ffffff; font-weight: bold } /* Generic.Subheading */
+.highlight-4c56d471-c9df-4327-afa9-6893288058a0 .gt { color: #ffffff } /* Generic.Traceback */
+.highlight-4c56d471-c9df-4327-afa9-6893288058a0 .kc { color: #fb660a; font-weight: bold } /* Keyword.Constant */
+.highlight-4c56d471-c9df-4327-afa9-6893288058a0 .kd { color: #fb660a; font-weight: bold } /* Keyword.Declaration */
+.highlight-4c56d471-c9df-4327-afa9-6893288058a0 .kn { color: #fb660a; font-weight: bold } /* Keyword.Namespace */
+.highlight-4c56d471-c9df-4327-afa9-6893288058a0 .kp { color: #fb660a } /* Keyword.Pseudo */
+.highlight-4c56d471-c9df-4327-afa9-6893288058a0 .kr { color: #fb660a; font-weight: bold } /* Keyword.Reserved */
+.highlight-4c56d471-c9df-4327-afa9-6893288058a0 .kt { color: #cdcaa9; font-weight: bold } /* Keyword.Type */
+.highlight-4c56d471-c9df-4327-afa9-6893288058a0 .ld { color: #ffffff } /* Literal.Date */
+.highlight-4c56d471-c9df-4327-afa9-6893288058a0 .m { color: #0086f7; font-weight: bold } /* Literal.Number */
+.highlight-4c56d471-c9df-4327-afa9-6893288058a0 .s { color: #0086d2 } /* Literal.String */
+.highlight-4c56d471-c9df-4327-afa9-6893288058a0 .na { color: #ff0086; font-weight: bold } /* Name.Attribute */
+.highlight-4c56d471-c9df-4327-afa9-6893288058a0 .nb { color: #ffffff } /* Name.Builtin */
+.highlight-4c56d471-c9df-4327-afa9-6893288058a0 .nc { color: #ffffff } /* Name.Class */
+.highlight-4c56d471-c9df-4327-afa9-6893288058a0 .no { color: #0086d2 } /* Name.Constant */
+.highlight-4c56d471-c9df-4327-afa9-6893288058a0 .nd { color: #ffffff } /* Name.Decorator */
+.highlight-4c56d471-c9df-4327-afa9-6893288058a0 .ni { color: #ffffff } /* Name.Entity */
+.highlight-4c56d471-c9df-4327-afa9-6893288058a0 .ne { color: #ffffff } /* Name.Exception */
+.highlight-4c56d471-c9df-4327-afa9-6893288058a0 .nf { color: #ff0086; font-weight: bold } /* Name.Function */
+.highlight-4c56d471-c9df-4327-afa9-6893288058a0 .nl { color: #ffffff } /* Name.Label */
+.highlight-4c56d471-c9df-4327-afa9-6893288058a0 .nn { color: #ffffff } /* Name.Namespace */
+.highlight-4c56d471-c9df-4327-afa9-6893288058a0 .nx { color: #ffffff } /* Name.Other */
+.highlight-4c56d471-c9df-4327-afa9-6893288058a0 .py { color: #ffffff } /* Name.Property */
+.highlight-4c56d471-c9df-4327-afa9-6893288058a0 .nt { color: #fb660a; font-weight: bold } /* Name.Tag */
+.highlight-4c56d471-c9df-4327-afa9-6893288058a0 .nv { color: #fb660a } /* Name.Variable */
+.highlight-4c56d471-c9df-4327-afa9-6893288058a0 .ow { color: #ffffff } /* Operator.Word */
+.highlight-4c56d471-c9df-4327-afa9-6893288058a0 .pm { color: #ffffff } /* Punctuation.Marker */
+.highlight-4c56d471-c9df-4327-afa9-6893288058a0 .w { color: #888888 } /* Text.Whitespace */
+.highlight-4c56d471-c9df-4327-afa9-6893288058a0 .mb { color: #0086f7; font-weight: bold } /* Literal.Number.Bin */
+.highlight-4c56d471-c9df-4327-afa9-6893288058a0 .mf { color: #0086f7; font-weight: bold } /* Literal.Number.Float */
+.highlight-4c56d471-c9df-4327-afa9-6893288058a0 .mh { color: #0086f7; font-weight: bold } /* Literal.Number.Hex */
+.highlight-4c56d471-c9df-4327-afa9-6893288058a0 .mi { color: #0086f7; font-weight: bold } /* Literal.Number.Integer */
+.highlight-4c56d471-c9df-4327-afa9-6893288058a0 .mo { color: #0086f7; font-weight: bold } /* Literal.Number.Oct */
+.highlight-4c56d471-c9df-4327-afa9-6893288058a0 .sa { color: #0086d2 } /* Literal.String.Affix */
+.highlight-4c56d471-c9df-4327-afa9-6893288058a0 .sb { color: #0086d2 } /* Literal.String.Backtick */
+.highlight-4c56d471-c9df-4327-afa9-6893288058a0 .sc { color: #0086d2 } /* Literal.String.Char */
+.highlight-4c56d471-c9df-4327-afa9-6893288058a0 .dl { color: #0086d2 } /* Literal.String.Delimiter */
+.highlight-4c56d471-c9df-4327-afa9-6893288058a0 .sd { color: #0086d2 } /* Literal.String.Doc */
+.highlight-4c56d471-c9df-4327-afa9-6893288058a0 .s2 { color: #0086d2 } /* Literal.String.Double */
+.highlight-4c56d471-c9df-4327-afa9-6893288058a0 .se { color: #0086d2 } /* Literal.String.Escape */
+.highlight-4c56d471-c9df-4327-afa9-6893288058a0 .sh { color: #0086d2 } /* Literal.String.Heredoc */
+.highlight-4c56d471-c9df-4327-afa9-6893288058a0 .si { color: #0086d2 } /* Literal.String.Interpol */
+.highlight-4c56d471-c9df-4327-afa9-6893288058a0 .sx { color: #0086d2 } /* Literal.String.Other */
+.highlight-4c56d471-c9df-4327-afa9-6893288058a0 .sr { color: #0086d2 } /* Literal.String.Regex */
+.highlight-4c56d471-c9df-4327-afa9-6893288058a0 .s1 { color: #0086d2 } /* Literal.String.Single */
+.highlight-4c56d471-c9df-4327-afa9-6893288058a0 .ss { color: #0086d2 } /* Literal.String.Symbol */
+.highlight-4c56d471-c9df-4327-afa9-6893288058a0 .bp { color: #ffffff } /* Name.Builtin.Pseudo */
+.highlight-4c56d471-c9df-4327-afa9-6893288058a0 .fm { color: #ff0086; font-weight: bold } /* Name.Function.Magic */
+.highlight-4c56d471-c9df-4327-afa9-6893288058a0 .vc { color: #fb660a } /* Name.Variable.Class */
+.highlight-4c56d471-c9df-4327-afa9-6893288058a0 .vg { color: #fb660a } /* Name.Variable.Global */
+.highlight-4c56d471-c9df-4327-afa9-6893288058a0 .vi { color: #fb660a } /* Name.Variable.Instance */
+.highlight-4c56d471-c9df-4327-afa9-6893288058a0 .vm { color: #fb660a } /* Name.Variable.Magic */
+.highlight-4c56d471-c9df-4327-afa9-6893288058a0 .il { color: #0086f7; font-weight: bold } /* Literal.Number.Integer.Long */
+  </style>
+  <h2>
+  </h2>
+  <div class="highlight-4c56d471-c9df-4327-afa9-6893288058a0" style="overflow: auto;height: 300px;border-radius: 10px;width: 80%;margin: auto;border: ;background: #171932;;box-shadow: inset 10px 10px 10px rgba(0,0,0,.7);;">
+   <pre style="line-height: 120%;margin-top: 10px;margin-bottom: 10px;margin-left: 10px;margin-right: 10px;font-family: Source Code Pro;font-size: 10px;padding: 0;"><span></span><span class="k">def</span> <span class="nf">find_programs_format_html_code</span><span class="p">(</span><span class="n">program_param</span><span class="p">,</span> <span class="n">html_code</span><span class="p">):</span>
+
+    <span class="n">div_highlight_style</span> <span class="o">=</span>\
+        <span class="s2">"overflow: auto;"</span><span class="o">+</span>\
+        <span class="sa">f</span><span class="s2">"height: </span><span class="si">{</span><span class="n">program_param</span><span class="p">[</span><span class="s1">'box-height:'</span><span class="p">]</span><span class="si">}</span><span class="s2">;"</span><span class="o">+</span>\
+        <span class="sa">f</span><span class="s2">"border-radius: </span><span class="si">{</span><span class="n">program_param</span><span class="p">[</span><span class="s1">'box-border-radius:'</span><span class="p">]</span><span class="si">}</span><span class="s2">;"</span><span class="o">+</span>\
+        <span class="sa">f</span><span class="s2">"width: </span><span class="si">{</span><span class="n">program_param</span><span class="p">[</span><span class="s1">'box-width:'</span><span class="p">]</span><span class="si">}</span><span class="s2">;"</span><span class="o">+</span>\
+        <span class="s2">"margin: auto;"</span><span class="o">+</span>\
+        <span class="sa">f</span><span class="s2">"border: </span><span class="si">{</span><span class="n">program_param</span><span class="p">[</span><span class="s1">'box-border:'</span><span class="p">]</span><span class="si">}</span><span class="s2">;"</span><span class="o">+</span>\
+        <span class="sa">f</span><span class="s2">"background: </span><span class="si">{</span><span class="n">program_param</span><span class="p">[</span><span class="s1">'box-background:'</span><span class="p">]</span><span class="si">}</span><span class="s2">;"</span><span class="o">+</span>\
+        <span class="sa">f</span><span class="s2">"box-shadow: </span><span class="si">{</span><span class="n">program_param</span><span class="p">[</span><span class="s1">'box-shadow:'</span><span class="p">]</span><span class="si">}</span><span class="s2">;"</span>
+
+    <span class="n">td_linenos_style</span> <span class="o">=</span> <span class="s2">"td.linenos .normal-4c56d471-c9df-4327-afa9-6893288058a0 {"</span><span class="o">+</span>\
+                        <span class="sa">f</span><span class="s2">"color: </span><span class="si">{</span><span class="n">program_param</span><span class="p">[</span><span class="s1">'number-color:'</span><span class="p">]</span><span class="si">}</span><span class="s2">;"</span><span class="o">+</span>\
+                        <span class="sa">f</span><span class="s2">"background-color: </span><span class="si">{</span><span class="n">program_param</span><span class="p">[</span><span class="s1">'number-background-color:'</span><span class="p">]</span><span class="si">}</span><span class="s2">;"</span><span class="o">+</span>\
+                        <span class="sa">f</span><span class="s2">"border: </span><span class="si">{</span><span class="n">program_param</span><span class="p">[</span><span class="s1">'number-border:'</span><span class="p">]</span><span class="si">}</span><span class="s2">;"</span><span class="o">+</span>\
+                        <span class="sa">f</span><span class="s2">"border-radius: </span><span class="si">{</span><span class="n">program_param</span><span class="p">[</span><span class="s1">'number-border-radius:'</span><span class="p">]</span><span class="si">}</span><span class="s2">;"</span><span class="o">+</span>\
+                        <span class="sa">f</span><span class="s2">"padding-left: </span><span class="si">{</span><span class="n">program_param</span><span class="p">[</span><span class="s1">'number-padding-left-right:'</span><span class="p">]</span><span class="si">}</span><span class="s2">;"</span><span class="o">+</span>\
+                        <span class="sa">f</span><span class="s2">"padding-right: </span><span class="si">{</span><span class="n">program_param</span><span class="p">[</span><span class="s1">'number-padding-left-right:'</span><span class="p">]</span><span class="si">}</span><span class="s2">;"</span><span class="o">+</span>\
+                        <span class="sa">f</span><span class="s2">"margin-left: </span><span class="si">{</span><span class="n">program_param</span><span class="p">[</span><span class="s1">'number-margin-left:'</span><span class="p">]</span><span class="si">}</span><span class="s2">;"</span><span class="o">+</span>\
+                        <span class="sa">f</span><span class="s2">"margin-right: </span><span class="si">{</span><span class="n">program_param</span><span class="p">[</span><span class="s1">'number-margin-right:'</span><span class="p">]</span><span class="si">}</span><span class="s2">;"</span><span class="o">+</span>\
+                        <span class="sa">f</span><span class="s2">"font-weight: </span><span class="si">{</span><span class="n">program_param</span><span class="p">[</span><span class="s1">'number-font-weight:'</span><span class="p">]</span><span class="si">}</span><span class="s2">;"</span><span class="o">+</span>\
+                        <span class="s2">"}"</span>
+
+    <span class="n">html_lignes</span> <span class="o">=</span> <span class="n">html_code</span><span class="o">.</span><span class="n">splitlines</span><span class="p">()</span>
+
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">ligne</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">html_lignes</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">ligne</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">'pre {'</span><span class="p">):</span>
+            <span class="k">del</span> <span class="n">html_lignes</span><span class="p">[:</span><span class="n">i</span><span class="p">]</span>
+            <span class="k">break</span>
+
+    <span class="n">html_lignes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"&lt;style&gt;"</span>
+
+    <span class="n">html_lignes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">td_linenos_style</span>
+    <span class="n">html_code</span> <span class="o">=</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">html_lignes</span><span class="p">)</span>
+
+    <span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">html_code</span><span class="p">,</span> <span class="s1">'html.parser'</span><span class="p">)</span>
+
+    <span class="n">highlight_div</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">'div'</span><span class="p">,</span> <span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">'class'</span><span class="p">:</span> <span class="s1">'highlight'</span><span class="p">})</span>
+
+    <span class="k">if</span> <span class="n">highlight_div</span><span class="p">:</span>
+        <span class="n">highlight_div</span><span class="p">[</span><span class="s1">'style'</span><span class="p">]</span> <span class="o">=</span> <span class="n">div_highlight_style</span>
+
+    <span class="n">html_code</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">prettify</span><span class="p">()</span>
+
+    <span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">html_code</span><span class="p">,</span> <span class="s1">'html.parser'</span><span class="p">)</span>
+
+    <span class="n">balises_pre</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s1">'pre'</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">balise</span> <span class="ow">in</span> <span class="n">balises_pre</span><span class="p">:</span>
+
+        <span class="n">balise</span><span class="p">[</span><span class="s1">'style'</span><span class="p">]</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"line-height: </span><span class="si">{</span><span class="n">program_param</span><span class="p">[</span><span class="s1">'box-line-height:'</span><span class="p">]</span><span class="si">}</span><span class="s2">;"</span><span class="o">+</span>\
+                            <span class="sa">f</span><span class="s2">"margin-top: </span><span class="si">{</span><span class="n">program_param</span><span class="p">[</span><span class="s1">'box-margin-top:'</span><span class="p">]</span><span class="si">}</span><span class="s2">;"</span><span class="o">+</span>\
+                            <span class="sa">f</span><span class="s2">"margin-bottom: </span><span class="si">{</span><span class="n">program_param</span><span class="p">[</span><span class="s1">'box-margin-bottom:'</span><span class="p">]</span><span class="si">}</span><span class="s2">;"</span><span class="o">+</span>\
+                            <span class="sa">f</span><span class="s2">"margin-left: </span><span class="si">{</span><span class="n">program_param</span><span class="p">[</span><span class="s1">'box-margin-left:'</span><span class="p">]</span><span class="si">}</span><span class="s2">;"</span><span class="o">+</span>\
+                            <span class="sa">f</span><span class="s2">"margin-right: </span><span class="si">{</span><span class="n">program_param</span><span class="p">[</span><span class="s1">'box-margin-right:'</span><span class="p">]</span><span class="si">}</span><span class="s2">;"</span><span class="o">+</span>\
+                            <span class="sa">f</span><span class="s2">"font-family: </span><span class="si">{</span><span class="n">program_param</span><span class="p">[</span><span class="s1">'box-font-family:'</span><span class="p">]</span><span class="si">}</span><span class="s2">;"</span><span class="o">+</span>\
+                            <span class="sa">f</span><span class="s2">"font-size: </span><span class="si">{</span><span class="n">program_param</span><span class="p">[</span><span class="s1">'box-font-size:'</span><span class="p">]</span><span class="si">}</span><span class="s2">;"</span><span class="o">+</span>\
+                            <span class="s2">"padding: 0;"</span>
+
+        <span class="k">if</span> <span class="n">program_param</span><span class="p">[</span><span class="s1">'number:'</span><span class="p">]</span> <span class="o">==</span> <span class="s1">'1'</span><span class="p">:</span>
+            <span class="n">balise</span><span class="p">[</span><span class="s1">'style'</span><span class="p">]</span> <span class="o">+=</span> <span class="s2">"width: max-content;"</span>
+
+    <span class="n">html_code</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">prettify</span><span class="p">()</span>
+
+    <span class="k">return</span><span class="p">(</span><span class="n">html_code</span><span class="p">)</span>
+</pre>
+  </div>
+  <!-- program>
+number: 0
+number-color:
+number-background-color:
+number-border:
+number-border-radius:
+number-padding-left-right:
+number-margin-left:
+number-margin-right:
+number-font-weight:
+box-background: #171932;
+box-border:
+box-border-radius: 10px
+box-shadow: inset 10px 10px 10px rgba(0,0,0,.7);
+box-font-size: 10px
+box-font-family: Source Code Pro
+box-line-height: 120%
+box-width: 80%
+box-height: 300px
+box-margin-top: 10px
+box-margin-bottom: 10px
+box-margin-left: 10px
+box-margin-right: 10px
+language: python
+theme: fruity
+code: code_example_1.py
+<program -->
+  <p>
+   <br/>
+  </p>
+  <blockquote>
+   <blockquote>
+    <h4>
+     2 )
+    </h4>
+    <blockquote>
+     <p>
+      box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+      <br/>
+      box-font-size: 10px
+      <br/>
+      box-font-family: Source Code Pro
+      <br/>
+      theme: nord-darker
+     </p>
+    </blockquote>
+   </blockquote>
+  </blockquote>
+  <p>
+   <br/>
+  </p>
+  <div class="codehilite">
+   <pre><span></span><code><span class="n">number</span><span class="o">:</span><span class="w"> </span><span class="mi">1</span>
+<span class="n">number</span><span class="o">-</span><span class="n">color</span><span class="o">:</span>
+<span class="n">number</span><span class="o">-</span><span class="n">background</span><span class="o">-</span><span class="n">color</span><span class="o">:</span>
+<span class="n">number</span><span class="o">-</span><span class="n">border</span><span class="o">:</span>
+<span class="n">number</span><span class="o">-</span><span class="n">border</span><span class="o">-</span><span class="n">radius</span><span class="o">:</span>
+<span class="n">number</span><span class="o">-</span><span class="n">padding</span><span class="o">-</span><span class="n">left</span><span class="o">-</span><span class="n">right</span><span class="o">:</span>
+<span class="n">number</span><span class="o">-</span><span class="n">margin</span><span class="o">-</span><span class="n">left</span><span class="o">:</span>
+<span class="n">number</span><span class="o">-</span><span class="n">margin</span><span class="o">-</span><span class="n">right</span><span class="o">:</span>
+<span class="n">number</span><span class="o">-</span><span class="n">font</span><span class="o">-</span><span class="n">weight</span><span class="o">:</span>
+<span class="n">box</span><span class="o">-</span><span class="n">background</span><span class="o">:</span>
+<span class="n">box</span><span class="o">-</span><span class="n">border</span><span class="o">:</span>
+<span class="n">box</span><span class="o">-</span><span class="n">border</span><span class="o">-</span><span class="n">radius</span><span class="o">:</span><span class="w"> </span><span class="mi">10</span><span class="n">px</span><span class="o">;</span>
+<span class="n">box</span><span class="o">-</span><span class="n">shadow</span><span class="o">:</span><span class="w"> </span><span class="n">rgba</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span><span class="w"> </span><span class="mi">0</span><span class="o">,</span><span class="w"> </span><span class="mi">0</span><span class="o">,</span><span class="w"> </span><span class="mf">0.25</span><span class="o">)</span><span class="w"> </span><span class="mi">0</span><span class="n">px</span><span class="w"> </span><span class="mi">54</span><span class="n">px</span><span class="w"> </span><span class="mi">55</span><span class="n">px</span><span class="o">,</span><span class="w"> </span><span class="n">rgba</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span><span class="w"> </span><span class="mi">0</span><span class="o">,</span><span class="w"> </span><span class="mi">0</span><span class="o">,</span><span class="w"> </span><span class="mf">0.12</span><span class="o">)</span><span class="w"> </span><span class="mi">0</span><span class="n">px</span><span class="w"> </span><span class="o">-</span><span class="mi">12</span><span class="n">px</span><span class="w"> </span><span class="mi">30</span><span class="n">px</span><span class="o">,</span><span class="w"> </span><span class="n">rgba</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span><span class="w"> </span><span class="mi">0</span><span class="o">,</span><span class="w"> </span><span class="mi">0</span><span class="o">,</span><span class="w"> </span><span class="mf">0.12</span><span class="o">)</span><span class="w"> </span><span class="mi">0</span><span class="n">px</span><span class="w"> </span><span class="mi">4</span><span class="n">px</span><span class="w"> </span><span class="mi">6</span><span class="n">px</span><span class="o">,</span><span class="w"> </span><span class="n">rgba</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span><span class="w"> </span><span class="mi">0</span><span class="o">,</span><span class="w"> </span><span class="mi">0</span><span class="o">,</span><span class="w"> </span><span class="mf">0.17</span><span class="o">)</span><span class="w"> </span><span class="mi">0</span><span class="n">px</span><span class="w"> </span><span class="mi">12</span><span class="n">px</span><span class="w"> </span><span class="mi">13</span><span class="n">px</span><span class="o">,</span><span class="w"> </span><span class="n">rgba</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span><span class="w"> </span><span class="mi">0</span><span class="o">,</span><span class="w"> </span><span class="mi">0</span><span class="o">,</span><span class="w"> </span><span class="mf">0.09</span><span class="o">)</span><span class="w"> </span><span class="mi">0</span><span class="n">px</span><span class="w"> </span><span class="o">-</span><span class="mi">3</span><span class="n">px</span><span class="w"> </span><span class="mi">5</span><span class="n">px</span><span class="o">;</span>
+<span class="n">box</span><span class="o">-</span><span class="n">font</span><span class="o">-</span><span class="n">size</span><span class="o">:</span><span class="w"> </span><span class="mi">10</span><span class="n">px</span>
+<span class="n">box</span><span class="o">-</span><span class="n">font</span><span class="o">-</span><span class="n">family</span><span class="o">:</span><span class="w"> </span><span class="n">Source</span><span class="w"> </span><span class="n">Code</span><span class="w"> </span><span class="n">Pro</span>
+<span class="n">box</span><span class="o">-</span><span class="n">line</span><span class="o">-</span><span class="n">height</span><span class="o">:</span><span class="w"> </span><span class="mi">120</span><span class="o">%</span>
+<span class="n">box</span><span class="o">-</span><span class="n">width</span><span class="o">:</span><span class="w"> </span><span class="mi">80</span><span class="o">%</span>
+<span class="n">box</span><span class="o">-</span><span class="n">height</span><span class="o">:</span><span class="w"> </span><span class="mi">300</span><span class="n">px</span>
+<span class="n">box</span><span class="o">-</span><span class="n">margin</span><span class="o">-</span><span class="n">top</span><span class="o">:</span><span class="w"> </span><span class="mi">10</span><span class="n">px</span>
+<span class="n">box</span><span class="o">-</span><span class="n">margin</span><span class="o">-</span><span class="n">bottom</span><span class="o">:</span><span class="w"> </span><span class="mi">10</span><span class="n">px</span>
+<span class="n">box</span><span class="o">-</span><span class="n">margin</span><span class="o">-</span><span class="n">left</span><span class="o">:</span><span class="w"> </span><span class="mi">10</span><span class="n">px</span>
+<span class="n">box</span><span class="o">-</span><span class="n">margin</span><span class="o">-</span><span class="n">right</span><span class="o">:</span><span class="w"> </span><span class="mi">10</span><span class="n">px</span>
+<span class="n">language</span><span class="o">:</span><span class="w"> </span><span class="n">python</span>
+<span class="n">theme</span><span class="o">:</span><span class="w"> </span><span class="n">nord</span><span class="o">-</span><span class="n">darker</span>
+<span class="n">code</span><span class="o">:</span><span class="w"> </span><span class="n">code_example_1</span><span class="o">.</span><span class="na">py</span>
+</code></pre>
+  </div>
+  <p>
+   <br/>
+  </p>
+  <style>
+   td.linenos .normal-38212c03-3073-4238-bb88-09a72c68900f {color: ;background-color: ;border: ;border-radius: ;padding-left: ;padding-right: ;margin-left: ;margin-right: ;font-weight: ;}
+span.linenos { color: #D8DEE9; background-color: #242933; padding-left: 5px; padding-right: 5px; }
+td.linenos .special { color: #242933; background-color: #D8DEE9; padding-left: 5px; padding-right: 5px; }
+span.linenos.special { color: #242933; background-color: #D8DEE9; padding-left: 5px; padding-right: 5px; }
+.highlight-38212c03-3073-4238-bb88-09a72c68900f .hll { background-color: #3B4252 }
+.highlight-38212c03-3073-4238-bb88-09a72c68900f { background: #242933; color: #d8dee9 }
+.highlight-38212c03-3073-4238-bb88-09a72c68900f .c { color: #616e87; font-style: italic } /* Comment */
+.highlight-38212c03-3073-4238-bb88-09a72c68900f .err { color: #bf616a } /* Error */
+.highlight-38212c03-3073-4238-bb88-09a72c68900f .esc { color: #d8dee9 } /* Escape */
+.highlight-38212c03-3073-4238-bb88-09a72c68900f .g { color: #d8dee9 } /* Generic */
+.highlight-38212c03-3073-4238-bb88-09a72c68900f .k { color: #81a1c1; font-weight: bold } /* Keyword */
+.highlight-38212c03-3073-4238-bb88-09a72c68900f .l { color: #d8dee9 } /* Literal */
+.highlight-38212c03-3073-4238-bb88-09a72c68900f .n { color: #d8dee9 } /* Name */
+.highlight-38212c03-3073-4238-bb88-09a72c68900f .o { color: #81a1c1; font-weight: bold } /* Operator */
+.highlight-38212c03-3073-4238-bb88-09a72c68900f .x { color: #d8dee9 } /* Other */
+.highlight-38212c03-3073-4238-bb88-09a72c68900f .p { color: #eceff4 } /* Punctuation */
+.highlight-38212c03-3073-4238-bb88-09a72c68900f .ch { color: #616e87; font-style: italic } /* Comment.Hashbang */
+.highlight-38212c03-3073-4238-bb88-09a72c68900f .cm { color: #616e87; font-style: italic } /* Comment.Multiline */
+.highlight-38212c03-3073-4238-bb88-09a72c68900f .cp { color: #5e81ac; font-style: italic } /* Comment.Preproc */
+.highlight-38212c03-3073-4238-bb88-09a72c68900f .cpf { color: #616e87; font-style: italic } /* Comment.PreprocFile */
+.highlight-38212c03-3073-4238-bb88-09a72c68900f .c1 { color: #616e87; font-style: italic } /* Comment.Single */
+.highlight-38212c03-3073-4238-bb88-09a72c68900f .cs { color: #616e87; font-style: italic } /* Comment.Special */
+.highlight-38212c03-3073-4238-bb88-09a72c68900f .gd { color: #bf616a } /* Generic.Deleted */
+.highlight-38212c03-3073-4238-bb88-09a72c68900f .ge { color: #d8dee9; font-style: italic } /* Generic.Emph */
+.highlight-38212c03-3073-4238-bb88-09a72c68900f .ges { color: #d8dee9 } /* Generic.EmphStrong */
+.highlight-38212c03-3073-4238-bb88-09a72c68900f .gr { color: #bf616a } /* Generic.Error */
+.highlight-38212c03-3073-4238-bb88-09a72c68900f .gh { color: #88c0d0; font-weight: bold } /* Generic.Heading */
+.highlight-38212c03-3073-4238-bb88-09a72c68900f .gi { color: #a3be8c } /* Generic.Inserted */
+.highlight-38212c03-3073-4238-bb88-09a72c68900f .go { color: #d8dee9 } /* Generic.Output */
+.highlight-38212c03-3073-4238-bb88-09a72c68900f .gp { color: #616e88; font-weight: bold } /* Generic.Prompt */
+.highlight-38212c03-3073-4238-bb88-09a72c68900f .gs { color: #d8dee9; font-weight: bold } /* Generic.Strong */
+.highlight-38212c03-3073-4238-bb88-09a72c68900f .gu { color: #88c0d0; font-weight: bold } /* Generic.Subheading */
+.highlight-38212c03-3073-4238-bb88-09a72c68900f .gt { color: #bf616a } /* Generic.Traceback */
+.highlight-38212c03-3073-4238-bb88-09a72c68900f .kc { color: #81a1c1; font-weight: bold } /* Keyword.Constant */
+.highlight-38212c03-3073-4238-bb88-09a72c68900f .kd { color: #81a1c1; font-weight: bold } /* Keyword.Declaration */
+.highlight-38212c03-3073-4238-bb88-09a72c68900f .kn { color: #81a1c1; font-weight: bold } /* Keyword.Namespace */
+.highlight-38212c03-3073-4238-bb88-09a72c68900f .kp { color: #81a1c1 } /* Keyword.Pseudo */
+.highlight-38212c03-3073-4238-bb88-09a72c68900f .kr { color: #81a1c1; font-weight: bold } /* Keyword.Reserved */
+.highlight-38212c03-3073-4238-bb88-09a72c68900f .kt { color: #81a1c1 } /* Keyword.Type */
+.highlight-38212c03-3073-4238-bb88-09a72c68900f .ld { color: #d8dee9 } /* Literal.Date */
+.highlight-38212c03-3073-4238-bb88-09a72c68900f .m { color: #b48ead } /* Literal.Number */
+.highlight-38212c03-3073-4238-bb88-09a72c68900f .s { color: #a3be8c } /* Literal.String */
+.highlight-38212c03-3073-4238-bb88-09a72c68900f .na { color: #8fbcbb } /* Name.Attribute */
+.highlight-38212c03-3073-4238-bb88-09a72c68900f .nb { color: #81a1c1 } /* Name.Builtin */
+.highlight-38212c03-3073-4238-bb88-09a72c68900f .nc { color: #8fbcbb } /* Name.Class */
+.highlight-38212c03-3073-4238-bb88-09a72c68900f .no { color: #8fbcbb } /* Name.Constant */
+.highlight-38212c03-3073-4238-bb88-09a72c68900f .nd { color: #d08770 } /* Name.Decorator */
+.highlight-38212c03-3073-4238-bb88-09a72c68900f .ni { color: #d08770 } /* Name.Entity */
+.highlight-38212c03-3073-4238-bb88-09a72c68900f .ne { color: #bf616a } /* Name.Exception */
+.highlight-38212c03-3073-4238-bb88-09a72c68900f .nf { color: #88c0d0 } /* Name.Function */
+.highlight-38212c03-3073-4238-bb88-09a72c68900f .nl { color: #d8dee9 } /* Name.Label */
+.highlight-38212c03-3073-4238-bb88-09a72c68900f .nn { color: #8fbcbb } /* Name.Namespace */
+.highlight-38212c03-3073-4238-bb88-09a72c68900f .nx { color: #d8dee9 } /* Name.Other */
+.highlight-38212c03-3073-4238-bb88-09a72c68900f .py { color: #d8dee9 } /* Name.Property */
+.highlight-38212c03-3073-4238-bb88-09a72c68900f .nt { color: #81a1c1 } /* Name.Tag */
+.highlight-38212c03-3073-4238-bb88-09a72c68900f .nv { color: #d8dee9 } /* Name.Variable */
+.highlight-38212c03-3073-4238-bb88-09a72c68900f .ow { color: #81a1c1; font-weight: bold } /* Operator.Word */
+.highlight-38212c03-3073-4238-bb88-09a72c68900f .pm { color: #eceff4 } /* Punctuation.Marker */
+.highlight-38212c03-3073-4238-bb88-09a72c68900f .w { color: #d8dee9 } /* Text.Whitespace */
+.highlight-38212c03-3073-4238-bb88-09a72c68900f .mb { color: #b48ead } /* Literal.Number.Bin */
+.highlight-38212c03-3073-4238-bb88-09a72c68900f .mf { color: #b48ead } /* Literal.Number.Float */
+.highlight-38212c03-3073-4238-bb88-09a72c68900f .mh { color: #b48ead } /* Literal.Number.Hex */
+.highlight-38212c03-3073-4238-bb88-09a72c68900f .mi { color: #b48ead } /* Literal.Number.Integer */
+.highlight-38212c03-3073-4238-bb88-09a72c68900f .mo { color: #b48ead } /* Literal.Number.Oct */
+.highlight-38212c03-3073-4238-bb88-09a72c68900f .sa { color: #a3be8c } /* Literal.String.Affix */
+.highlight-38212c03-3073-4238-bb88-09a72c68900f .sb { color: #a3be8c } /* Literal.String.Backtick */
+.highlight-38212c03-3073-4238-bb88-09a72c68900f .sc { color: #a3be8c } /* Literal.String.Char */
+.highlight-38212c03-3073-4238-bb88-09a72c68900f .dl { color: #a3be8c } /* Literal.String.Delimiter */
+.highlight-38212c03-3073-4238-bb88-09a72c68900f .sd { color: #616e87 } /* Literal.String.Doc */
+.highlight-38212c03-3073-4238-bb88-09a72c68900f .s2 { color: #a3be8c } /* Literal.String.Double */
+.highlight-38212c03-3073-4238-bb88-09a72c68900f .se { color: #ebcb8b } /* Literal.String.Escape */
+.highlight-38212c03-3073-4238-bb88-09a72c68900f .sh { color: #a3be8c } /* Literal.String.Heredoc */
+.highlight-38212c03-3073-4238-bb88-09a72c68900f .si { color: #a3be8c } /* Literal.String.Interpol */
+.highlight-38212c03-3073-4238-bb88-09a72c68900f .sx { color: #a3be8c } /* Literal.String.Other */
+.highlight-38212c03-3073-4238-bb88-09a72c68900f .sr { color: #ebcb8b } /* Literal.String.Regex */
+.highlight-38212c03-3073-4238-bb88-09a72c68900f .s1 { color: #a3be8c } /* Literal.String.Single */
+.highlight-38212c03-3073-4238-bb88-09a72c68900f .ss { color: #a3be8c } /* Literal.String.Symbol */
+.highlight-38212c03-3073-4238-bb88-09a72c68900f .bp { color: #81a1c1 } /* Name.Builtin.Pseudo */
+.highlight-38212c03-3073-4238-bb88-09a72c68900f .fm { color: #88c0d0 } /* Name.Function.Magic */
+.highlight-38212c03-3073-4238-bb88-09a72c68900f .vc { color: #d8dee9 } /* Name.Variable.Class */
+.highlight-38212c03-3073-4238-bb88-09a72c68900f .vg { color: #d8dee9 } /* Name.Variable.Global */
+.highlight-38212c03-3073-4238-bb88-09a72c68900f .vi { color: #d8dee9 } /* Name.Variable.Instance */
+.highlight-38212c03-3073-4238-bb88-09a72c68900f .vm { color: #d8dee9 } /* Name.Variable.Magic */
+.highlight-38212c03-3073-4238-bb88-09a72c68900f .il { color: #b48ead } /* Literal.Number.Integer.Long */
+  </style>
+  <h2>
+  </h2>
+  <div class="highlight-38212c03-3073-4238-bb88-09a72c68900f" style="overflow: auto;height: 300px;border-radius: 10px;;width: 80%;margin: auto;border: ;background: ;box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;;">
+   <table class="highlighttable">
+    <tr>
+     <td class="linenos">
+      <div class="linenodiv">
+       <pre style="line-height: 120%;margin-top: 10px;margin-bottom: 10px;margin-left: 10px;margin-right: 10px;font-family: Source Code Pro;font-size: 10px;padding: 0;width: max-content;"><span class="normal-38212c03-3073-4238-bb88-09a72c68900f"> 1</span>
+<span class="normal-38212c03-3073-4238-bb88-09a72c68900f"> 2</span>
+<span class="normal-38212c03-3073-4238-bb88-09a72c68900f"> 3</span>
+<span class="normal-38212c03-3073-4238-bb88-09a72c68900f"> 4</span>
+<span class="normal-38212c03-3073-4238-bb88-09a72c68900f"> 5</span>
+<span class="normal-38212c03-3073-4238-bb88-09a72c68900f"> 6</span>
+<span class="normal-38212c03-3073-4238-bb88-09a72c68900f"> 7</span>
+<span class="normal-38212c03-3073-4238-bb88-09a72c68900f"> 8</span>
+<span class="normal-38212c03-3073-4238-bb88-09a72c68900f"> 9</span>
+<span class="normal-38212c03-3073-4238-bb88-09a72c68900f">10</span>
+<span class="normal-38212c03-3073-4238-bb88-09a72c68900f">11</span>
+<span class="normal-38212c03-3073-4238-bb88-09a72c68900f">12</span>
+<span class="normal-38212c03-3073-4238-bb88-09a72c68900f">13</span>
+<span class="normal-38212c03-3073-4238-bb88-09a72c68900f">14</span>
+<span class="normal-38212c03-3073-4238-bb88-09a72c68900f">15</span>
+<span class="normal-38212c03-3073-4238-bb88-09a72c68900f">16</span>
+<span class="normal-38212c03-3073-4238-bb88-09a72c68900f">17</span>
+<span class="normal-38212c03-3073-4238-bb88-09a72c68900f">18</span>
+<span class="normal-38212c03-3073-4238-bb88-09a72c68900f">19</span>
+<span class="normal-38212c03-3073-4238-bb88-09a72c68900f">20</span>
+<span class="normal-38212c03-3073-4238-bb88-09a72c68900f">21</span>
+<span class="normal-38212c03-3073-4238-bb88-09a72c68900f">22</span>
+<span class="normal-38212c03-3073-4238-bb88-09a72c68900f">23</span>
+<span class="normal-38212c03-3073-4238-bb88-09a72c68900f">24</span>
+<span class="normal-38212c03-3073-4238-bb88-09a72c68900f">25</span>
+<span class="normal-38212c03-3073-4238-bb88-09a72c68900f">26</span>
+<span class="normal-38212c03-3073-4238-bb88-09a72c68900f">27</span>
+<span class="normal-38212c03-3073-4238-bb88-09a72c68900f">28</span>
+<span class="normal-38212c03-3073-4238-bb88-09a72c68900f">29</span>
+<span class="normal-38212c03-3073-4238-bb88-09a72c68900f">30</span>
+<span class="normal-38212c03-3073-4238-bb88-09a72c68900f">31</span>
+<span class="normal-38212c03-3073-4238-bb88-09a72c68900f">32</span>
+<span class="normal-38212c03-3073-4238-bb88-09a72c68900f">33</span>
+<span class="normal-38212c03-3073-4238-bb88-09a72c68900f">34</span>
+<span class="normal-38212c03-3073-4238-bb88-09a72c68900f">35</span>
+<span class="normal-38212c03-3073-4238-bb88-09a72c68900f">36</span>
+<span class="normal-38212c03-3073-4238-bb88-09a72c68900f">37</span>
+<span class="normal-38212c03-3073-4238-bb88-09a72c68900f">38</span>
+<span class="normal-38212c03-3073-4238-bb88-09a72c68900f">39</span>
+<span class="normal-38212c03-3073-4238-bb88-09a72c68900f">40</span>
+<span class="normal-38212c03-3073-4238-bb88-09a72c68900f">41</span>
+<span class="normal-38212c03-3073-4238-bb88-09a72c68900f">42</span>
+<span class="normal-38212c03-3073-4238-bb88-09a72c68900f">43</span>
+<span class="normal-38212c03-3073-4238-bb88-09a72c68900f">44</span>
+<span class="normal-38212c03-3073-4238-bb88-09a72c68900f">45</span>
+<span class="normal-38212c03-3073-4238-bb88-09a72c68900f">46</span>
+<span class="normal-38212c03-3073-4238-bb88-09a72c68900f">47</span>
+<span class="normal-38212c03-3073-4238-bb88-09a72c68900f">48</span>
+<span class="normal-38212c03-3073-4238-bb88-09a72c68900f">49</span>
+<span class="normal-38212c03-3073-4238-bb88-09a72c68900f">50</span>
+<span class="normal-38212c03-3073-4238-bb88-09a72c68900f">51</span>
+<span class="normal-38212c03-3073-4238-bb88-09a72c68900f">52</span>
+<span class="normal-38212c03-3073-4238-bb88-09a72c68900f">53</span>
+<span class="normal-38212c03-3073-4238-bb88-09a72c68900f">54</span>
+<span class="normal-38212c03-3073-4238-bb88-09a72c68900f">55</span>
+<span class="normal-38212c03-3073-4238-bb88-09a72c68900f">56</span>
+<span class="normal-38212c03-3073-4238-bb88-09a72c68900f">57</span>
+<span class="normal-38212c03-3073-4238-bb88-09a72c68900f">58</span>
+<span class="normal-38212c03-3073-4238-bb88-09a72c68900f">59</span>
+<span class="normal-38212c03-3073-4238-bb88-09a72c68900f">60</span>
+<span class="normal-38212c03-3073-4238-bb88-09a72c68900f">61</span>
+<span class="normal-38212c03-3073-4238-bb88-09a72c68900f">62</span>
+<span class="normal-38212c03-3073-4238-bb88-09a72c68900f">63</span>
+<span class="normal-38212c03-3073-4238-bb88-09a72c68900f">64</span>
+<span class="normal-38212c03-3073-4238-bb88-09a72c68900f">65</span>
+<span class="normal-38212c03-3073-4238-bb88-09a72c68900f">66</span></pre>
+      </div>
+     </td>
+     <td class="code">
+      <div>
+       <pre style="line-height: 120%;margin-top: 10px;margin-bottom: 10px;margin-left: 10px;margin-right: 10px;font-family: Source Code Pro;font-size: 10px;padding: 0;width: max-content;"><span></span><span class="k">def</span> <span class="nf">find_programs_format_html_code</span><span class="p">(</span><span class="n">program_param</span><span class="p">,</span> <span class="n">html_code</span><span class="p">):</span>
+
+    <span class="n">div_highlight_style</span> <span class="o">=</span>\
+        <span class="s2">"overflow: auto;"</span><span class="o">+</span>\
+        <span class="sa">f</span><span class="s2">"height: </span><span class="si">{</span><span class="n">program_param</span><span class="p">[</span><span class="s1">'box-height:'</span><span class="p">]</span><span class="si">}</span><span class="s2">;"</span><span class="o">+</span>\
+        <span class="sa">f</span><span class="s2">"border-radius: </span><span class="si">{</span><span class="n">program_param</span><span class="p">[</span><span class="s1">'box-border-radius:'</span><span class="p">]</span><span class="si">}</span><span class="s2">;"</span><span class="o">+</span>\
+        <span class="sa">f</span><span class="s2">"width: </span><span class="si">{</span><span class="n">program_param</span><span class="p">[</span><span class="s1">'box-width:'</span><span class="p">]</span><span class="si">}</span><span class="s2">;"</span><span class="o">+</span>\
+        <span class="s2">"margin: auto;"</span><span class="o">+</span>\
+        <span class="sa">f</span><span class="s2">"border: </span><span class="si">{</span><span class="n">program_param</span><span class="p">[</span><span class="s1">'box-border:'</span><span class="p">]</span><span class="si">}</span><span class="s2">;"</span><span class="o">+</span>\
+        <span class="sa">f</span><span class="s2">"background: </span><span class="si">{</span><span class="n">program_param</span><span class="p">[</span><span class="s1">'box-background:'</span><span class="p">]</span><span class="si">}</span><span class="s2">;"</span><span class="o">+</span>\
+        <span class="sa">f</span><span class="s2">"box-shadow: </span><span class="si">{</span><span class="n">program_param</span><span class="p">[</span><span class="s1">'box-shadow:'</span><span class="p">]</span><span class="si">}</span><span class="s2">;"</span>
+
+    <span class="n">td_linenos_style</span> <span class="o">=</span> <span class="s2">"td.linenos .normal-38212c03-3073-4238-bb88-09a72c68900f {"</span><span class="o">+</span>\
+                        <span class="sa">f</span><span class="s2">"color: </span><span class="si">{</span><span class="n">program_param</span><span class="p">[</span><span class="s1">'number-color:'</span><span class="p">]</span><span class="si">}</span><span class="s2">;"</span><span class="o">+</span>\
+                        <span class="sa">f</span><span class="s2">"background-color: </span><span class="si">{</span><span class="n">program_param</span><span class="p">[</span><span class="s1">'number-background-color:'</span><span class="p">]</span><span class="si">}</span><span class="s2">;"</span><span class="o">+</span>\
+                        <span class="sa">f</span><span class="s2">"border: </span><span class="si">{</span><span class="n">program_param</span><span class="p">[</span><span class="s1">'number-border:'</span><span class="p">]</span><span class="si">}</span><span class="s2">;"</span><span class="o">+</span>\
+                        <span class="sa">f</span><span class="s2">"border-radius: </span><span class="si">{</span><span class="n">program_param</span><span class="p">[</span><span class="s1">'number-border-radius:'</span><span class="p">]</span><span class="si">}</span><span class="s2">;"</span><span class="o">+</span>\
+                        <span class="sa">f</span><span class="s2">"padding-left: </span><span class="si">{</span><span class="n">program_param</span><span class="p">[</span><span class="s1">'number-padding-left-right:'</span><span class="p">]</span><span class="si">}</span><span class="s2">;"</span><span class="o">+</span>\
+                        <span class="sa">f</span><span class="s2">"padding-right: </span><span class="si">{</span><span class="n">program_param</span><span class="p">[</span><span class="s1">'number-padding-left-right:'</span><span class="p">]</span><span class="si">}</span><span class="s2">;"</span><span class="o">+</span>\
+                        <span class="sa">f</span><span class="s2">"margin-left: </span><span class="si">{</span><span class="n">program_param</span><span class="p">[</span><span class="s1">'number-margin-left:'</span><span class="p">]</span><span class="si">}</span><span class="s2">;"</span><span class="o">+</span>\
+                        <span class="sa">f</span><span class="s2">"margin-right: </span><span class="si">{</span><span class="n">program_param</span><span class="p">[</span><span class="s1">'number-margin-right:'</span><span class="p">]</span><span class="si">}</span><span class="s2">;"</span><span class="o">+</span>\
+                        <span class="sa">f</span><span class="s2">"font-weight: </span><span class="si">{</span><span class="n">program_param</span><span class="p">[</span><span class="s1">'number-font-weight:'</span><span class="p">]</span><span class="si">}</span><span class="s2">;"</span><span class="o">+</span>\
+                        <span class="s2">"}"</span>
+
+    <span class="n">html_lignes</span> <span class="o">=</span> <span class="n">html_code</span><span class="o">.</span><span class="n">splitlines</span><span class="p">()</span>
+
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">ligne</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">html_lignes</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">ligne</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">'pre {'</span><span class="p">):</span>
+            <span class="k">del</span> <span class="n">html_lignes</span><span class="p">[:</span><span class="n">i</span><span class="p">]</span>
+            <span class="k">break</span>
+
+    <span class="n">html_lignes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"&lt;style&gt;"</span>
+
+    <span class="n">html_lignes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">td_linenos_style</span>
+    <span class="n">html_code</span> <span class="o">=</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">html_lignes</span><span class="p">)</span>
+
+    <span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">html_code</span><span class="p">,</span> <span class="s1">'html.parser'</span><span class="p">)</span>
+
+    <span class="n">highlight_div</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">'div'</span><span class="p">,</span> <span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">'class'</span><span class="p">:</span> <span class="s1">'highlight'</span><span class="p">})</span>
+
+    <span class="k">if</span> <span class="n">highlight_div</span><span class="p">:</span>
+        <span class="n">highlight_div</span><span class="p">[</span><span class="s1">'style'</span><span class="p">]</span> <span class="o">=</span> <span class="n">div_highlight_style</span>
+
+    <span class="n">html_code</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">prettify</span><span class="p">()</span>
+
+    <span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">html_code</span><span class="p">,</span> <span class="s1">'html.parser'</span><span class="p">)</span>
+
+    <span class="n">balises_pre</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s1">'pre'</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">balise</span> <span class="ow">in</span> <span class="n">balises_pre</span><span class="p">:</span>
+
+        <span class="n">balise</span><span class="p">[</span><span class="s1">'style'</span><span class="p">]</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"line-height: </span><span class="si">{</span><span class="n">program_param</span><span class="p">[</span><span class="s1">'box-line-height:'</span><span class="p">]</span><span class="si">}</span><span class="s2">;"</span><span class="o">+</span>\
+                            <span class="sa">f</span><span class="s2">"margin-top: </span><span class="si">{</span><span class="n">program_param</span><span class="p">[</span><span class="s1">'box-margin-top:'</span><span class="p">]</span><span class="si">}</span><span class="s2">;"</span><span class="o">+</span>\
+                            <span class="sa">f</span><span class="s2">"margin-bottom: </span><span class="si">{</span><span class="n">program_param</span><span class="p">[</span><span class="s1">'box-margin-bottom:'</span><span class="p">]</span><span class="si">}</span><span class="s2">;"</span><span class="o">+</span>\
+                            <span class="sa">f</span><span class="s2">"margin-left: </span><span class="si">{</span><span class="n">program_param</span><span class="p">[</span><span class="s1">'box-margin-left:'</span><span class="p">]</span><span class="si">}</span><span class="s2">;"</span><span class="o">+</span>\
+                            <span class="sa">f</span><span class="s2">"margin-right: </span><span class="si">{</span><span class="n">program_param</span><span class="p">[</span><span class="s1">'box-margin-right:'</span><span class="p">]</span><span class="si">}</span><span class="s2">;"</span><span class="o">+</span>\
+                            <span class="sa">f</span><span class="s2">"font-family: </span><span class="si">{</span><span class="n">program_param</span><span class="p">[</span><span class="s1">'box-font-family:'</span><span class="p">]</span><span class="si">}</span><span class="s2">;"</span><span class="o">+</span>\
+                            <span class="sa">f</span><span class="s2">"font-size: </span><span class="si">{</span><span class="n">program_param</span><span class="p">[</span><span class="s1">'box-font-size:'</span><span class="p">]</span><span class="si">}</span><span class="s2">;"</span><span class="o">+</span>\
+                            <span class="s2">"padding: 0;"</span>
+
+        <span class="k">if</span> <span class="n">program_param</span><span class="p">[</span><span class="s1">'number:'</span><span class="p">]</span> <span class="o">==</span> <span class="s1">'1'</span><span class="p">:</span>
+            <span class="n">balise</span><span class="p">[</span><span class="s1">'style'</span><span class="p">]</span> <span class="o">+=</span> <span class="s2">"width: max-content;"</span>
+
+    <span class="n">html_code</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">prettify</span><span class="p">()</span>
+
+    <span class="k">return</span><span class="p">(</span><span class="n">html_code</span><span class="p">)</span>
+</pre>
+      </div>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <!-- program>
+number: 1
+number-color:
+number-background-color:
+number-border:
+number-border-radius:
+number-padding-left-right:
+number-margin-left:
+number-margin-right:
+number-font-weight:
+box-background:
+box-border:
+box-border-radius: 10px;
+box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+box-font-size: 10px
+box-font-family: Source Code Pro
+box-line-height: 120%
+box-width: 80%
+box-height: 300px
+box-margin-top: 10px
+box-margin-bottom: 10px
+box-margin-left: 10px
+box-margin-right: 10px
+language: python
+theme: nord-darker
+code: code_example_1.py
+<program -->
+  <p>
+   <br/>
+  </p>
+  <blockquote>
+   <blockquote>
+    <h4>
+     3 )
+    </h4>
+    <blockquote>
+     <p>
+      box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+      <br/>
+      box-font-size: 16px
+      <br/>
+      box-font-family: Play
+      <br/>
+      theme: monokai
+     </p>
+    </blockquote>
+   </blockquote>
+  </blockquote>
+  <p>
+   <br/>
+  </p>
+  <div class="codehilite">
+   <pre><span></span><code><span class="n">number</span><span class="o">:</span><span class="w"> </span><span class="mi">0</span>
+<span class="n">number</span><span class="o">-</span><span class="n">color</span><span class="o">:</span>
+<span class="n">number</span><span class="o">-</span><span class="n">background</span><span class="o">-</span><span class="n">color</span><span class="o">:</span>
+<span class="n">number</span><span class="o">-</span><span class="n">border</span><span class="o">:</span>
+<span class="n">number</span><span class="o">-</span><span class="n">border</span><span class="o">-</span><span class="n">radius</span><span class="o">:</span>
+<span class="n">number</span><span class="o">-</span><span class="n">padding</span><span class="o">-</span><span class="n">left</span><span class="o">-</span><span class="n">right</span><span class="o">:</span>
+<span class="n">number</span><span class="o">-</span><span class="n">margin</span><span class="o">-</span><span class="n">left</span><span class="o">:</span>
+<span class="n">number</span><span class="o">-</span><span class="n">margin</span><span class="o">-</span><span class="n">right</span><span class="o">:</span>
+<span class="n">number</span><span class="o">-</span><span class="n">font</span><span class="o">-</span><span class="n">weight</span><span class="o">:</span>
+<span class="n">box</span><span class="o">-</span><span class="n">background</span><span class="o">:</span>
+<span class="n">box</span><span class="o">-</span><span class="n">border</span><span class="o">:</span>
+<span class="n">box</span><span class="o">-</span><span class="n">border</span><span class="o">-</span><span class="n">radius</span><span class="o">:</span>
+<span class="n">box</span><span class="o">-</span><span class="n">shadow</span><span class="o">:</span><span class="w"> </span><span class="n">rgba</span><span class="o">(</span><span class="mi">6</span><span class="o">,</span><span class="w"> </span><span class="mi">24</span><span class="o">,</span><span class="w"> </span><span class="mi">44</span><span class="o">,</span><span class="w"> </span><span class="mf">0.4</span><span class="o">)</span><span class="w"> </span><span class="mi">0</span><span class="n">px</span><span class="w"> </span><span class="mi">0</span><span class="n">px</span><span class="w"> </span><span class="mi">0</span><span class="n">px</span><span class="w"> </span><span class="mi">2</span><span class="n">px</span><span class="o">,</span><span class="w"> </span><span class="n">rgba</span><span class="o">(</span><span class="mi">6</span><span class="o">,</span><span class="w"> </span><span class="mi">24</span><span class="o">,</span><span class="w"> </span><span class="mi">44</span><span class="o">,</span><span class="w"> </span><span class="mf">0.65</span><span class="o">)</span><span class="w"> </span><span class="mi">0</span><span class="n">px</span><span class="w"> </span><span class="mi">4</span><span class="n">px</span><span class="w"> </span><span class="mi">6</span><span class="n">px</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="n">px</span><span class="o">,</span><span class="w"> </span><span class="n">rgba</span><span class="o">(</span><span class="mi">255</span><span class="o">,</span><span class="w"> </span><span class="mi">255</span><span class="o">,</span><span class="w"> </span><span class="mi">255</span><span class="o">,</span><span class="w"> </span><span class="mf">0.08</span><span class="o">)</span><span class="w"> </span><span class="mi">0</span><span class="n">px</span><span class="w"> </span><span class="mi">1</span><span class="n">px</span><span class="w"> </span><span class="mi">0</span><span class="n">px</span><span class="w"> </span><span class="n">inset</span><span class="o">;</span>
+<span class="n">box</span><span class="o">-</span><span class="n">font</span><span class="o">-</span><span class="n">size</span><span class="o">:</span><span class="w"> </span><span class="mi">16</span><span class="n">px</span>
+<span class="n">box</span><span class="o">-</span><span class="n">font</span><span class="o">-</span><span class="n">family</span><span class="o">:</span><span class="w"> </span><span class="n">Play</span>
+<span class="n">box</span><span class="o">-</span><span class="n">line</span><span class="o">-</span><span class="n">height</span><span class="o">:</span><span class="w"> </span><span class="mi">120</span><span class="o">%</span>
+<span class="n">box</span><span class="o">-</span><span class="n">width</span><span class="o">:</span><span class="w"> </span><span class="mi">80</span><span class="o">%</span>
+<span class="n">box</span><span class="o">-</span><span class="n">height</span><span class="o">:</span><span class="w"> </span><span class="mi">300</span><span class="n">px</span>
+<span class="n">box</span><span class="o">-</span><span class="n">margin</span><span class="o">-</span><span class="n">top</span><span class="o">:</span><span class="w"> </span><span class="mi">10</span><span class="n">px</span>
+<span class="n">box</span><span class="o">-</span><span class="n">margin</span><span class="o">-</span><span class="n">bottom</span><span class="o">:</span><span class="w"> </span><span class="mi">10</span><span class="n">px</span>
+<span class="n">box</span><span class="o">-</span><span class="n">margin</span><span class="o">-</span><span class="n">left</span><span class="o">:</span><span class="w"> </span><span class="mi">10</span><span class="n">px</span>
+<span class="n">box</span><span class="o">-</span><span class="n">margin</span><span class="o">-</span><span class="n">right</span><span class="o">:</span><span class="w"> </span><span class="mi">10</span><span class="n">px</span>
+<span class="n">language</span><span class="o">:</span><span class="w"> </span><span class="n">python</span>
+<span class="n">theme</span><span class="o">:</span><span class="w"> </span><span class="n">monokai</span>
+<span class="n">code</span><span class="o">:</span><span class="w"> </span><span class="n">code_example_1</span><span class="o">.</span><span class="na">py</span>
+</code></pre>
+  </div>
+  <p>
+   <br/>
+  </p>
+  <style>
+   td.linenos .normal-5edea37a-b9dd-4930-9e7d-a11b94401fb0 {color: ;background-color: ;border: ;border-radius: ;padding-left: ;padding-right: ;margin-left: ;margin-right: ;font-weight: ;}
+span.linenos { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+td.linenos .special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+.highlight-5edea37a-b9dd-4930-9e7d-a11b94401fb0 .hll { background-color: #49483e }
+.highlight-5edea37a-b9dd-4930-9e7d-a11b94401fb0 { background: #272822; color: #f8f8f2 }
+.highlight-5edea37a-b9dd-4930-9e7d-a11b94401fb0 .c { color: #959077 } /* Comment */
+.highlight-5edea37a-b9dd-4930-9e7d-a11b94401fb0 .err { color: #ed007e; background-color: #1e0010 } /* Error */
+.highlight-5edea37a-b9dd-4930-9e7d-a11b94401fb0 .esc { color: #f8f8f2 } /* Escape */
+.highlight-5edea37a-b9dd-4930-9e7d-a11b94401fb0 .g { color: #f8f8f2 } /* Generic */
+.highlight-5edea37a-b9dd-4930-9e7d-a11b94401fb0 .k { color: #66d9ef } /* Keyword */
+.highlight-5edea37a-b9dd-4930-9e7d-a11b94401fb0 .l { color: #ae81ff } /* Literal */
+.highlight-5edea37a-b9dd-4930-9e7d-a11b94401fb0 .n { color: #f8f8f2 } /* Name */
+.highlight-5edea37a-b9dd-4930-9e7d-a11b94401fb0 .o { color: #ff4689 } /* Operator */
+.highlight-5edea37a-b9dd-4930-9e7d-a11b94401fb0 .x { color: #f8f8f2 } /* Other */
+.highlight-5edea37a-b9dd-4930-9e7d-a11b94401fb0 .p { color: #f8f8f2 } /* Punctuation */
+.highlight-5edea37a-b9dd-4930-9e7d-a11b94401fb0 .ch { color: #959077 } /* Comment.Hashbang */
+.highlight-5edea37a-b9dd-4930-9e7d-a11b94401fb0 .cm { color: #959077 } /* Comment.Multiline */
+.highlight-5edea37a-b9dd-4930-9e7d-a11b94401fb0 .cp { color: #959077 } /* Comment.Preproc */
+.highlight-5edea37a-b9dd-4930-9e7d-a11b94401fb0 .cpf { color: #959077 } /* Comment.PreprocFile */
+.highlight-5edea37a-b9dd-4930-9e7d-a11b94401fb0 .c1 { color: #959077 } /* Comment.Single */
+.highlight-5edea37a-b9dd-4930-9e7d-a11b94401fb0 .cs { color: #959077 } /* Comment.Special */
+.highlight-5edea37a-b9dd-4930-9e7d-a11b94401fb0 .gd { color: #ff4689 } /* Generic.Deleted */
+.highlight-5edea37a-b9dd-4930-9e7d-a11b94401fb0 .ge { color: #f8f8f2; font-style: italic } /* Generic.Emph */
+.highlight-5edea37a-b9dd-4930-9e7d-a11b94401fb0 .ges { color: #f8f8f2; font-weight: bold; font-style: italic } /* Generic.EmphStrong */
+.highlight-5edea37a-b9dd-4930-9e7d-a11b94401fb0 .gr { color: #f8f8f2 } /* Generic.Error */
+.highlight-5edea37a-b9dd-4930-9e7d-a11b94401fb0 .gh { color: #f8f8f2 } /* Generic.Heading */
+.highlight-5edea37a-b9dd-4930-9e7d-a11b94401fb0 .gi { color: #a6e22e } /* Generic.Inserted */
+.highlight-5edea37a-b9dd-4930-9e7d-a11b94401fb0 .go { color: #66d9ef } /* Generic.Output */
+.highlight-5edea37a-b9dd-4930-9e7d-a11b94401fb0 .gp { color: #ff4689; font-weight: bold } /* Generic.Prompt */
+.highlight-5edea37a-b9dd-4930-9e7d-a11b94401fb0 .gs { color: #f8f8f2; font-weight: bold } /* Generic.Strong */
+.highlight-5edea37a-b9dd-4930-9e7d-a11b94401fb0 .gu { color: #959077 } /* Generic.Subheading */
+.highlight-5edea37a-b9dd-4930-9e7d-a11b94401fb0 .gt { color: #f8f8f2 } /* Generic.Traceback */
+.highlight-5edea37a-b9dd-4930-9e7d-a11b94401fb0 .kc { color: #66d9ef } /* Keyword.Constant */
+.highlight-5edea37a-b9dd-4930-9e7d-a11b94401fb0 .kd { color: #66d9ef } /* Keyword.Declaration */
+.highlight-5edea37a-b9dd-4930-9e7d-a11b94401fb0 .kn { color: #ff4689 } /* Keyword.Namespace */
+.highlight-5edea37a-b9dd-4930-9e7d-a11b94401fb0 .kp { color: #66d9ef } /* Keyword.Pseudo */
+.highlight-5edea37a-b9dd-4930-9e7d-a11b94401fb0 .kr { color: #66d9ef } /* Keyword.Reserved */
+.highlight-5edea37a-b9dd-4930-9e7d-a11b94401fb0 .kt { color: #66d9ef } /* Keyword.Type */
+.highlight-5edea37a-b9dd-4930-9e7d-a11b94401fb0 .ld { color: #e6db74 } /* Literal.Date */
+.highlight-5edea37a-b9dd-4930-9e7d-a11b94401fb0 .m { color: #ae81ff } /* Literal.Number */
+.highlight-5edea37a-b9dd-4930-9e7d-a11b94401fb0 .s { color: #e6db74 } /* Literal.String */
+.highlight-5edea37a-b9dd-4930-9e7d-a11b94401fb0 .na { color: #a6e22e } /* Name.Attribute */
+.highlight-5edea37a-b9dd-4930-9e7d-a11b94401fb0 .nb { color: #f8f8f2 } /* Name.Builtin */
+.highlight-5edea37a-b9dd-4930-9e7d-a11b94401fb0 .nc { color: #a6e22e } /* Name.Class */
+.highlight-5edea37a-b9dd-4930-9e7d-a11b94401fb0 .no { color: #66d9ef } /* Name.Constant */
+.highlight-5edea37a-b9dd-4930-9e7d-a11b94401fb0 .nd { color: #a6e22e } /* Name.Decorator */
+.highlight-5edea37a-b9dd-4930-9e7d-a11b94401fb0 .ni { color: #f8f8f2 } /* Name.Entity */
+.highlight-5edea37a-b9dd-4930-9e7d-a11b94401fb0 .ne { color: #a6e22e } /* Name.Exception */
+.highlight-5edea37a-b9dd-4930-9e7d-a11b94401fb0 .nf { color: #a6e22e } /* Name.Function */
+.highlight-5edea37a-b9dd-4930-9e7d-a11b94401fb0 .nl { color: #f8f8f2 } /* Name.Label */
+.highlight-5edea37a-b9dd-4930-9e7d-a11b94401fb0 .nn { color: #f8f8f2 } /* Name.Namespace */
+.highlight-5edea37a-b9dd-4930-9e7d-a11b94401fb0 .nx { color: #a6e22e } /* Name.Other */
+.highlight-5edea37a-b9dd-4930-9e7d-a11b94401fb0 .py { color: #f8f8f2 } /* Name.Property */
+.highlight-5edea37a-b9dd-4930-9e7d-a11b94401fb0 .nt { color: #ff4689 } /* Name.Tag */
+.highlight-5edea37a-b9dd-4930-9e7d-a11b94401fb0 .nv { color: #f8f8f2 } /* Name.Variable */
+.highlight-5edea37a-b9dd-4930-9e7d-a11b94401fb0 .ow { color: #ff4689 } /* Operator.Word */
+.highlight-5edea37a-b9dd-4930-9e7d-a11b94401fb0 .pm { color: #f8f8f2 } /* Punctuation.Marker */
+.highlight-5edea37a-b9dd-4930-9e7d-a11b94401fb0 .w { color: #f8f8f2 } /* Text.Whitespace */
+.highlight-5edea37a-b9dd-4930-9e7d-a11b94401fb0 .mb { color: #ae81ff } /* Literal.Number.Bin */
+.highlight-5edea37a-b9dd-4930-9e7d-a11b94401fb0 .mf { color: #ae81ff } /* Literal.Number.Float */
+.highlight-5edea37a-b9dd-4930-9e7d-a11b94401fb0 .mh { color: #ae81ff } /* Literal.Number.Hex */
+.highlight-5edea37a-b9dd-4930-9e7d-a11b94401fb0 .mi { color: #ae81ff } /* Literal.Number.Integer */
+.highlight-5edea37a-b9dd-4930-9e7d-a11b94401fb0 .mo { color: #ae81ff } /* Literal.Number.Oct */
+.highlight-5edea37a-b9dd-4930-9e7d-a11b94401fb0 .sa { color: #e6db74 } /* Literal.String.Affix */
+.highlight-5edea37a-b9dd-4930-9e7d-a11b94401fb0 .sb { color: #e6db74 } /* Literal.String.Backtick */
+.highlight-5edea37a-b9dd-4930-9e7d-a11b94401fb0 .sc { color: #e6db74 } /* Literal.String.Char */
+.highlight-5edea37a-b9dd-4930-9e7d-a11b94401fb0 .dl { color: #e6db74 } /* Literal.String.Delimiter */
+.highlight-5edea37a-b9dd-4930-9e7d-a11b94401fb0 .sd { color: #e6db74 } /* Literal.String.Doc */
+.highlight-5edea37a-b9dd-4930-9e7d-a11b94401fb0 .s2 { color: #e6db74 } /* Literal.String.Double */
+.highlight-5edea37a-b9dd-4930-9e7d-a11b94401fb0 .se { color: #ae81ff } /* Literal.String.Escape */
+.highlight-5edea37a-b9dd-4930-9e7d-a11b94401fb0 .sh { color: #e6db74 } /* Literal.String.Heredoc */
+.highlight-5edea37a-b9dd-4930-9e7d-a11b94401fb0 .si { color: #e6db74 } /* Literal.String.Interpol */
+.highlight-5edea37a-b9dd-4930-9e7d-a11b94401fb0 .sx { color: #e6db74 } /* Literal.String.Other */
+.highlight-5edea37a-b9dd-4930-9e7d-a11b94401fb0 .sr { color: #e6db74 } /* Literal.String.Regex */
+.highlight-5edea37a-b9dd-4930-9e7d-a11b94401fb0 .s1 { color: #e6db74 } /* Literal.String.Single */
+.highlight-5edea37a-b9dd-4930-9e7d-a11b94401fb0 .ss { color: #e6db74 } /* Literal.String.Symbol */
+.highlight-5edea37a-b9dd-4930-9e7d-a11b94401fb0 .bp { color: #f8f8f2 } /* Name.Builtin.Pseudo */
+.highlight-5edea37a-b9dd-4930-9e7d-a11b94401fb0 .fm { color: #a6e22e } /* Name.Function.Magic */
+.highlight-5edea37a-b9dd-4930-9e7d-a11b94401fb0 .vc { color: #f8f8f2 } /* Name.Variable.Class */
+.highlight-5edea37a-b9dd-4930-9e7d-a11b94401fb0 .vg { color: #f8f8f2 } /* Name.Variable.Global */
+.highlight-5edea37a-b9dd-4930-9e7d-a11b94401fb0 .vi { color: #f8f8f2 } /* Name.Variable.Instance */
+.highlight-5edea37a-b9dd-4930-9e7d-a11b94401fb0 .vm { color: #f8f8f2 } /* Name.Variable.Magic */
+.highlight-5edea37a-b9dd-4930-9e7d-a11b94401fb0 .il { color: #ae81ff } /* Literal.Number.Integer.Long */
+  </style>
+  <h2>
+  </h2>
+  <div class="highlight-5edea37a-b9dd-4930-9e7d-a11b94401fb0" style="overflow: auto;height: 300px;border-radius: ;width: 80%;margin: auto;border: ;background: ;box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;;">
+   <pre style="line-height: 120%;margin-top: 10px;margin-bottom: 10px;margin-left: 10px;margin-right: 10px;font-family: Play;font-size: 16px;padding: 0;"><span></span><span class="k">def</span> <span class="nf">find_programs_format_html_code</span><span class="p">(</span><span class="n">program_param</span><span class="p">,</span> <span class="n">html_code</span><span class="p">):</span>
+
+    <span class="n">div_highlight_style</span> <span class="o">=</span>\
+        <span class="s2">"overflow: auto;"</span><span class="o">+</span>\
+        <span class="sa">f</span><span class="s2">"height: </span><span class="si">{</span><span class="n">program_param</span><span class="p">[</span><span class="s1">'box-height:'</span><span class="p">]</span><span class="si">}</span><span class="s2">;"</span><span class="o">+</span>\
+        <span class="sa">f</span><span class="s2">"border-radius: </span><span class="si">{</span><span class="n">program_param</span><span class="p">[</span><span class="s1">'box-border-radius:'</span><span class="p">]</span><span class="si">}</span><span class="s2">;"</span><span class="o">+</span>\
+        <span class="sa">f</span><span class="s2">"width: </span><span class="si">{</span><span class="n">program_param</span><span class="p">[</span><span class="s1">'box-width:'</span><span class="p">]</span><span class="si">}</span><span class="s2">;"</span><span class="o">+</span>\
+        <span class="s2">"margin: auto;"</span><span class="o">+</span>\
+        <span class="sa">f</span><span class="s2">"border: </span><span class="si">{</span><span class="n">program_param</span><span class="p">[</span><span class="s1">'box-border:'</span><span class="p">]</span><span class="si">}</span><span class="s2">;"</span><span class="o">+</span>\
+        <span class="sa">f</span><span class="s2">"background: </span><span class="si">{</span><span class="n">program_param</span><span class="p">[</span><span class="s1">'box-background:'</span><span class="p">]</span><span class="si">}</span><span class="s2">;"</span><span class="o">+</span>\
+        <span class="sa">f</span><span class="s2">"box-shadow: </span><span class="si">{</span><span class="n">program_param</span><span class="p">[</span><span class="s1">'box-shadow:'</span><span class="p">]</span><span class="si">}</span><span class="s2">;"</span>
+
+    <span class="n">td_linenos_style</span> <span class="o">=</span> <span class="s2">"td.linenos .normal-5edea37a-b9dd-4930-9e7d-a11b94401fb0 {"</span><span class="o">+</span>\
+                        <span class="sa">f</span><span class="s2">"color: </span><span class="si">{</span><span class="n">program_param</span><span class="p">[</span><span class="s1">'number-color:'</span><span class="p">]</span><span class="si">}</span><span class="s2">;"</span><span class="o">+</span>\
+                        <span class="sa">f</span><span class="s2">"background-color: </span><span class="si">{</span><span class="n">program_param</span><span class="p">[</span><span class="s1">'number-background-color:'</span><span class="p">]</span><span class="si">}</span><span class="s2">;"</span><span class="o">+</span>\
+                        <span class="sa">f</span><span class="s2">"border: </span><span class="si">{</span><span class="n">program_param</span><span class="p">[</span><span class="s1">'number-border:'</span><span class="p">]</span><span class="si">}</span><span class="s2">;"</span><span class="o">+</span>\
+                        <span class="sa">f</span><span class="s2">"border-radius: </span><span class="si">{</span><span class="n">program_param</span><span class="p">[</span><span class="s1">'number-border-radius:'</span><span class="p">]</span><span class="si">}</span><span class="s2">;"</span><span class="o">+</span>\
+                        <span class="sa">f</span><span class="s2">"padding-left: </span><span class="si">{</span><span class="n">program_param</span><span class="p">[</span><span class="s1">'number-padding-left-right:'</span><span class="p">]</span><span class="si">}</span><span class="s2">;"</span><span class="o">+</span>\
+                        <span class="sa">f</span><span class="s2">"padding-right: </span><span class="si">{</span><span class="n">program_param</span><span class="p">[</span><span class="s1">'number-padding-left-right:'</span><span class="p">]</span><span class="si">}</span><span class="s2">;"</span><span class="o">+</span>\
+                        <span class="sa">f</span><span class="s2">"margin-left: </span><span class="si">{</span><span class="n">program_param</span><span class="p">[</span><span class="s1">'number-margin-left:'</span><span class="p">]</span><span class="si">}</span><span class="s2">;"</span><span class="o">+</span>\
+                        <span class="sa">f</span><span class="s2">"margin-right: </span><span class="si">{</span><span class="n">program_param</span><span class="p">[</span><span class="s1">'number-margin-right:'</span><span class="p">]</span><span class="si">}</span><span class="s2">;"</span><span class="o">+</span>\
+                        <span class="sa">f</span><span class="s2">"font-weight: </span><span class="si">{</span><span class="n">program_param</span><span class="p">[</span><span class="s1">'number-font-weight:'</span><span class="p">]</span><span class="si">}</span><span class="s2">;"</span><span class="o">+</span>\
+                        <span class="s2">"}"</span>
+
+    <span class="n">html_lignes</span> <span class="o">=</span> <span class="n">html_code</span><span class="o">.</span><span class="n">splitlines</span><span class="p">()</span>
+
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">ligne</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">html_lignes</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">ligne</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">'pre {'</span><span class="p">):</span>
+            <span class="k">del</span> <span class="n">html_lignes</span><span class="p">[:</span><span class="n">i</span><span class="p">]</span>
+            <span class="k">break</span>
+
+    <span class="n">html_lignes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"&lt;style&gt;"</span>
+
+    <span class="n">html_lignes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">td_linenos_style</span>
+    <span class="n">html_code</span> <span class="o">=</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">html_lignes</span><span class="p">)</span>
+
+    <span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">html_code</span><span class="p">,</span> <span class="s1">'html.parser'</span><span class="p">)</span>
+
+    <span class="n">highlight_div</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">'div'</span><span class="p">,</span> <span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">'class'</span><span class="p">:</span> <span class="s1">'highlight'</span><span class="p">})</span>
+
+    <span class="k">if</span> <span class="n">highlight_div</span><span class="p">:</span>
+        <span class="n">highlight_div</span><span class="p">[</span><span class="s1">'style'</span><span class="p">]</span> <span class="o">=</span> <span class="n">div_highlight_style</span>
+
+    <span class="n">html_code</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">prettify</span><span class="p">()</span>
+
+    <span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">html_code</span><span class="p">,</span> <span class="s1">'html.parser'</span><span class="p">)</span>
+
+    <span class="n">balises_pre</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s1">'pre'</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">balise</span> <span class="ow">in</span> <span class="n">balises_pre</span><span class="p">:</span>
+
+        <span class="n">balise</span><span class="p">[</span><span class="s1">'style'</span><span class="p">]</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"line-height: </span><span class="si">{</span><span class="n">program_param</span><span class="p">[</span><span class="s1">'box-line-height:'</span><span class="p">]</span><span class="si">}</span><span class="s2">;"</span><span class="o">+</span>\
+                            <span class="sa">f</span><span class="s2">"margin-top: </span><span class="si">{</span><span class="n">program_param</span><span class="p">[</span><span class="s1">'box-margin-top:'</span><span class="p">]</span><span class="si">}</span><span class="s2">;"</span><span class="o">+</span>\
+                            <span class="sa">f</span><span class="s2">"margin-bottom: </span><span class="si">{</span><span class="n">program_param</span><span class="p">[</span><span class="s1">'box-margin-bottom:'</span><span class="p">]</span><span class="si">}</span><span class="s2">;"</span><span class="o">+</span>\
+                            <span class="sa">f</span><span class="s2">"margin-left: </span><span class="si">{</span><span class="n">program_param</span><span class="p">[</span><span class="s1">'box-margin-left:'</span><span class="p">]</span><span class="si">}</span><span class="s2">;"</span><span class="o">+</span>\
+                            <span class="sa">f</span><span class="s2">"margin-right: </span><span class="si">{</span><span class="n">program_param</span><span class="p">[</span><span class="s1">'box-margin-right:'</span><span class="p">]</span><span class="si">}</span><span class="s2">;"</span><span class="o">+</span>\
+                            <span class="sa">f</span><span class="s2">"font-family: </span><span class="si">{</span><span class="n">program_param</span><span class="p">[</span><span class="s1">'box-font-family:'</span><span class="p">]</span><span class="si">}</span><span class="s2">;"</span><span class="o">+</span>\
+                            <span class="sa">f</span><span class="s2">"font-size: </span><span class="si">{</span><span class="n">program_param</span><span class="p">[</span><span class="s1">'box-font-size:'</span><span class="p">]</span><span class="si">}</span><span class="s2">;"</span><span class="o">+</span>\
+                            <span class="s2">"padding: 0;"</span>
+
+        <span class="k">if</span> <span class="n">program_param</span><span class="p">[</span><span class="s1">'number:'</span><span class="p">]</span> <span class="o">==</span> <span class="s1">'1'</span><span class="p">:</span>
+            <span class="n">balise</span><span class="p">[</span><span class="s1">'style'</span><span class="p">]</span> <span class="o">+=</span> <span class="s2">"width: max-content;"</span>
+
+    <span class="n">html_code</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">prettify</span><span class="p">()</span>
+
+    <span class="k">return</span><span class="p">(</span><span class="n">html_code</span><span class="p">)</span>
+</pre>
+  </div>
+  <!-- program>
+number: 0
+number-color:
+number-background-color:
+number-border:
+number-border-radius:
+number-padding-left-right:
+number-margin-left:
+number-margin-right:
+number-font-weight:
+box-background:
+box-border:
+box-border-radius:
+box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+box-font-size: 16px
+box-font-family: Play
+box-line-height: 120%
+box-width: 80%
+box-height: 300px
+box-margin-top: 10px
+box-margin-bottom: 10px
+box-margin-left: 10px
+box-margin-right: 10px
+language: python
+theme: monokai
+code: code_example_1.py
+<program -->
+  <p>
+   <br/>
+  </p>
+  <blockquote>
+   <blockquote>
+    <h4>
+     4 )
+    </h4>
+    <blockquote>
+     <p>
+      box-shadow: rgba(0, 0, 0, 0.0) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+      <br/>
+      box-font-size: 12px
+      <br/>
+      box-font-family: Ubuntu Mono
+      <br/>
+      theme: fruity
+     </p>
+    </blockquote>
+   </blockquote>
+  </blockquote>
+  <p>
+   <br/>
+  </p>
+  <div class="codehilite">
+   <pre><span></span><code><span class="n">number</span><span class="o">:</span><span class="w"> </span><span class="mi">0</span>
+<span class="n">number</span><span class="o">-</span><span class="n">color</span><span class="o">:</span>
+<span class="n">number</span><span class="o">-</span><span class="n">background</span><span class="o">-</span><span class="n">color</span><span class="o">:</span>
+<span class="n">number</span><span class="o">-</span><span class="n">border</span><span class="o">:</span>
+<span class="n">number</span><span class="o">-</span><span class="n">border</span><span class="o">-</span><span class="n">radius</span><span class="o">:</span>
+<span class="n">number</span><span class="o">-</span><span class="n">padding</span><span class="o">-</span><span class="n">left</span><span class="o">-</span><span class="n">right</span><span class="o">:</span>
+<span class="n">number</span><span class="o">-</span><span class="n">margin</span><span class="o">-</span><span class="n">left</span><span class="o">:</span>
+<span class="n">number</span><span class="o">-</span><span class="n">margin</span><span class="o">-</span><span class="n">right</span><span class="o">:</span>
+<span class="n">number</span><span class="o">-</span><span class="n">font</span><span class="o">-</span><span class="n">weight</span><span class="o">:</span>
+<span class="n">box</span><span class="o">-</span><span class="n">background</span><span class="o">:</span><span class="w"> </span><span class="err">#</span><span class="mi">1</span><span class="n">B1E3B</span><span class="o">;</span>
+<span class="n">box</span><span class="o">-</span><span class="n">border</span><span class="o">:</span>
+<span class="n">box</span><span class="o">-</span><span class="n">border</span><span class="o">-</span><span class="n">radius</span><span class="o">:</span><span class="w"> </span><span class="mi">10</span><span class="n">px</span>
+<span class="n">box</span><span class="o">-</span><span class="n">shadow</span><span class="o">:</span><span class="w"> </span><span class="n">rgba</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span><span class="w"> </span><span class="mi">0</span><span class="o">,</span><span class="w"> </span><span class="mi">0</span><span class="o">,</span><span class="w"> </span><span class="mf">0.0</span><span class="o">)</span><span class="w"> </span><span class="mi">0</span><span class="n">px</span><span class="w"> </span><span class="mi">2</span><span class="n">px</span><span class="w"> </span><span class="mi">1</span><span class="n">px</span><span class="o">,</span><span class="w"> </span><span class="n">rgba</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span><span class="w"> </span><span class="mi">0</span><span class="o">,</span><span class="w"> </span><span class="mi">0</span><span class="o">,</span><span class="w"> </span><span class="mf">0.09</span><span class="o">)</span><span class="w"> </span><span class="mi">0</span><span class="n">px</span><span class="w"> </span><span class="mi">4</span><span class="n">px</span><span class="w"> </span><span class="mi">2</span><span class="n">px</span><span class="o">,</span><span class="w"> </span><span class="n">rgba</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span><span class="w"> </span><span class="mi">0</span><span class="o">,</span><span class="w"> </span><span class="mi">0</span><span class="o">,</span><span class="w"> </span><span class="mf">0.09</span><span class="o">)</span><span class="w"> </span><span class="mi">0</span><span class="n">px</span><span class="w"> </span><span class="mi">8</span><span class="n">px</span><span class="w"> </span><span class="mi">4</span><span class="n">px</span><span class="o">,</span><span class="w"> </span><span class="n">rgba</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span><span class="w"> </span><span class="mi">0</span><span class="o">,</span><span class="w"> </span><span class="mi">0</span><span class="o">,</span><span class="w"> </span><span class="mf">0.09</span><span class="o">)</span><span class="w"> </span><span class="mi">0</span><span class="n">px</span><span class="w"> </span><span class="mi">16</span><span class="n">px</span><span class="w"> </span><span class="mi">8</span><span class="n">px</span><span class="o">,</span><span class="w"> </span><span class="n">rgba</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span><span class="w"> </span><span class="mi">0</span><span class="o">,</span><span class="w"> </span><span class="mi">0</span><span class="o">,</span><span class="w"> </span><span class="mf">0.09</span><span class="o">)</span><span class="w"> </span><span class="mi">0</span><span class="n">px</span><span class="w"> </span><span class="mi">32</span><span class="n">px</span><span class="w"> </span><span class="mi">16</span><span class="n">px</span><span class="o">;</span>
+<span class="n">box</span><span class="o">-</span><span class="n">font</span><span class="o">-</span><span class="n">size</span><span class="o">:</span><span class="w"> </span><span class="mi">12</span><span class="n">px</span>
+<span class="n">box</span><span class="o">-</span><span class="n">font</span><span class="o">-</span><span class="n">family</span><span class="o">:</span><span class="w"> </span><span class="n">Ubuntu</span><span class="w"> </span><span class="n">Mono</span>
+<span class="n">box</span><span class="o">-</span><span class="n">line</span><span class="o">-</span><span class="n">height</span><span class="o">:</span><span class="w"> </span><span class="mi">120</span><span class="o">%</span>
+<span class="n">box</span><span class="o">-</span><span class="n">width</span><span class="o">:</span><span class="w"> </span><span class="mi">60</span><span class="o">%</span>
+<span class="n">box</span><span class="o">-</span><span class="n">height</span><span class="o">:</span><span class="w"> </span><span class="mi">297</span><span class="n">px</span>
+<span class="n">box</span><span class="o">-</span><span class="n">margin</span><span class="o">-</span><span class="n">top</span><span class="o">:</span><span class="w"> </span><span class="mi">10</span><span class="n">px</span>
+<span class="n">box</span><span class="o">-</span><span class="n">margin</span><span class="o">-</span><span class="n">bottom</span><span class="o">:</span><span class="w"> </span><span class="mi">10</span><span class="n">px</span>
+<span class="n">box</span><span class="o">-</span><span class="n">margin</span><span class="o">-</span><span class="n">left</span><span class="o">:</span><span class="w"> </span><span class="mi">10</span><span class="n">px</span>
+<span class="n">box</span><span class="o">-</span><span class="n">margin</span><span class="o">-</span><span class="n">right</span><span class="o">:</span><span class="w"> </span><span class="mi">10</span><span class="n">px</span>
+<span class="n">language</span><span class="o">:</span><span class="w"> </span><span class="n">python</span>
+<span class="n">theme</span><span class="o">:</span><span class="w"> </span><span class="n">fruity</span>
+<span class="n">code</span><span class="o">:</span><span class="w"> </span><span class="n">code_example_1</span><span class="o">.</span><span class="na">py</span>
+</code></pre>
+  </div>
+  <p>
+   <br/>
+  </p>
+  <style>
+   td.linenos .normal-5667d0de-3874-4008-9cc0-f3ffd46c25ed {color: ;background-color: ;border: ;border-radius: ;padding-left: ;padding-right: ;margin-left: ;margin-right: ;font-weight: ;}
+span.linenos { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+td.linenos .special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+.highlight-5667d0de-3874-4008-9cc0-f3ffd46c25ed .hll { background-color: #333333 }
+.highlight-5667d0de-3874-4008-9cc0-f3ffd46c25ed { background: #111111; color: #ffffff }
+.highlight-5667d0de-3874-4008-9cc0-f3ffd46c25ed .c { color: #008800; font-style: italic; background-color: #0f140f } /* Comment */
+.highlight-5667d0de-3874-4008-9cc0-f3ffd46c25ed .err { color: #ffffff } /* Error */
+.highlight-5667d0de-3874-4008-9cc0-f3ffd46c25ed .esc { color: #ffffff } /* Escape */
+.highlight-5667d0de-3874-4008-9cc0-f3ffd46c25ed .g { color: #ffffff } /* Generic */
+.highlight-5667d0de-3874-4008-9cc0-f3ffd46c25ed .k { color: #fb660a; font-weight: bold } /* Keyword */
+.highlight-5667d0de-3874-4008-9cc0-f3ffd46c25ed .l { color: #ffffff } /* Literal */
+.highlight-5667d0de-3874-4008-9cc0-f3ffd46c25ed .n { color: #ffffff } /* Name */
+.highlight-5667d0de-3874-4008-9cc0-f3ffd46c25ed .o { color: #ffffff } /* Operator */
+.highlight-5667d0de-3874-4008-9cc0-f3ffd46c25ed .x { color: #ffffff } /* Other */
+.highlight-5667d0de-3874-4008-9cc0-f3ffd46c25ed .p { color: #ffffff } /* Punctuation */
+.highlight-5667d0de-3874-4008-9cc0-f3ffd46c25ed .ch { color: #008800; font-style: italic; background-color: #0f140f } /* Comment.Hashbang */
+.highlight-5667d0de-3874-4008-9cc0-f3ffd46c25ed .cm { color: #008800; font-style: italic; background-color: #0f140f } /* Comment.Multiline */
+.highlight-5667d0de-3874-4008-9cc0-f3ffd46c25ed .cp { color: #ff0007; font-weight: bold; font-style: italic; background-color: #0f140f } /* Comment.Preproc */
+.highlight-5667d0de-3874-4008-9cc0-f3ffd46c25ed .cpf { color: #008800; font-style: italic; background-color: #0f140f } /* Comment.PreprocFile */
+.highlight-5667d0de-3874-4008-9cc0-f3ffd46c25ed .c1 { color: #008800; font-style: italic; background-color: #0f140f } /* Comment.Single */
+.highlight-5667d0de-3874-4008-9cc0-f3ffd46c25ed .cs { color: #008800; font-style: italic; background-color: #0f140f } /* Comment.Special */
+.highlight-5667d0de-3874-4008-9cc0-f3ffd46c25ed .gd { color: #ffffff } /* Generic.Deleted */
+.highlight-5667d0de-3874-4008-9cc0-f3ffd46c25ed .ge { color: #ffffff } /* Generic.Emph */
+.highlight-5667d0de-3874-4008-9cc0-f3ffd46c25ed .ges { color: #ffffff } /* Generic.EmphStrong */
+.highlight-5667d0de-3874-4008-9cc0-f3ffd46c25ed .gr { color: #ffffff } /* Generic.Error */
+.highlight-5667d0de-3874-4008-9cc0-f3ffd46c25ed .gh { color: #ffffff; font-weight: bold } /* Generic.Heading */
+.highlight-5667d0de-3874-4008-9cc0-f3ffd46c25ed .gi { color: #ffffff } /* Generic.Inserted */
+.highlight-5667d0de-3874-4008-9cc0-f3ffd46c25ed .go { color: #444444; background-color: #222222 } /* Generic.Output */
+.highlight-5667d0de-3874-4008-9cc0-f3ffd46c25ed .gp { color: #ffffff } /* Generic.Prompt */
+.highlight-5667d0de-3874-4008-9cc0-f3ffd46c25ed .gs { color: #ffffff } /* Generic.Strong */
+.highlight-5667d0de-3874-4008-9cc0-f3ffd46c25ed .gu { color: #ffffff; font-weight: bold } /* Generic.Subheading */
+.highlight-5667d0de-3874-4008-9cc0-f3ffd46c25ed .gt { color: #ffffff } /* Generic.Traceback */
+.highlight-5667d0de-3874-4008-9cc0-f3ffd46c25ed .kc { color: #fb660a; font-weight: bold } /* Keyword.Constant */
+.highlight-5667d0de-3874-4008-9cc0-f3ffd46c25ed .kd { color: #fb660a; font-weight: bold } /* Keyword.Declaration */
+.highlight-5667d0de-3874-4008-9cc0-f3ffd46c25ed .kn { color: #fb660a; font-weight: bold } /* Keyword.Namespace */
+.highlight-5667d0de-3874-4008-9cc0-f3ffd46c25ed .kp { color: #fb660a } /* Keyword.Pseudo */
+.highlight-5667d0de-3874-4008-9cc0-f3ffd46c25ed .kr { color: #fb660a; font-weight: bold } /* Keyword.Reserved */
+.highlight-5667d0de-3874-4008-9cc0-f3ffd46c25ed .kt { color: #cdcaa9; font-weight: bold } /* Keyword.Type */
+.highlight-5667d0de-3874-4008-9cc0-f3ffd46c25ed .ld { color: #ffffff } /* Literal.Date */
+.highlight-5667d0de-3874-4008-9cc0-f3ffd46c25ed .m { color: #0086f7; font-weight: bold } /* Literal.Number */
+.highlight-5667d0de-3874-4008-9cc0-f3ffd46c25ed .s { color: #0086d2 } /* Literal.String */
+.highlight-5667d0de-3874-4008-9cc0-f3ffd46c25ed .na { color: #ff0086; font-weight: bold } /* Name.Attribute */
+.highlight-5667d0de-3874-4008-9cc0-f3ffd46c25ed .nb { color: #ffffff } /* Name.Builtin */
+.highlight-5667d0de-3874-4008-9cc0-f3ffd46c25ed .nc { color: #ffffff } /* Name.Class */
+.highlight-5667d0de-3874-4008-9cc0-f3ffd46c25ed .no { color: #0086d2 } /* Name.Constant */
+.highlight-5667d0de-3874-4008-9cc0-f3ffd46c25ed .nd { color: #ffffff } /* Name.Decorator */
+.highlight-5667d0de-3874-4008-9cc0-f3ffd46c25ed .ni { color: #ffffff } /* Name.Entity */
+.highlight-5667d0de-3874-4008-9cc0-f3ffd46c25ed .ne { color: #ffffff } /* Name.Exception */
+.highlight-5667d0de-3874-4008-9cc0-f3ffd46c25ed .nf { color: #ff0086; font-weight: bold } /* Name.Function */
+.highlight-5667d0de-3874-4008-9cc0-f3ffd46c25ed .nl { color: #ffffff } /* Name.Label */
+.highlight-5667d0de-3874-4008-9cc0-f3ffd46c25ed .nn { color: #ffffff } /* Name.Namespace */
+.highlight-5667d0de-3874-4008-9cc0-f3ffd46c25ed .nx { color: #ffffff } /* Name.Other */
+.highlight-5667d0de-3874-4008-9cc0-f3ffd46c25ed .py { color: #ffffff } /* Name.Property */
+.highlight-5667d0de-3874-4008-9cc0-f3ffd46c25ed .nt { color: #fb660a; font-weight: bold } /* Name.Tag */
+.highlight-5667d0de-3874-4008-9cc0-f3ffd46c25ed .nv { color: #fb660a } /* Name.Variable */
+.highlight-5667d0de-3874-4008-9cc0-f3ffd46c25ed .ow { color: #ffffff } /* Operator.Word */
+.highlight-5667d0de-3874-4008-9cc0-f3ffd46c25ed .pm { color: #ffffff } /* Punctuation.Marker */
+.highlight-5667d0de-3874-4008-9cc0-f3ffd46c25ed .w { color: #888888 } /* Text.Whitespace */
+.highlight-5667d0de-3874-4008-9cc0-f3ffd46c25ed .mb { color: #0086f7; font-weight: bold } /* Literal.Number.Bin */
+.highlight-5667d0de-3874-4008-9cc0-f3ffd46c25ed .mf { color: #0086f7; font-weight: bold } /* Literal.Number.Float */
+.highlight-5667d0de-3874-4008-9cc0-f3ffd46c25ed .mh { color: #0086f7; font-weight: bold } /* Literal.Number.Hex */
+.highlight-5667d0de-3874-4008-9cc0-f3ffd46c25ed .mi { color: #0086f7; font-weight: bold } /* Literal.Number.Integer */
+.highlight-5667d0de-3874-4008-9cc0-f3ffd46c25ed .mo { color: #0086f7; font-weight: bold } /* Literal.Number.Oct */
+.highlight-5667d0de-3874-4008-9cc0-f3ffd46c25ed .sa { color: #0086d2 } /* Literal.String.Affix */
+.highlight-5667d0de-3874-4008-9cc0-f3ffd46c25ed .sb { color: #0086d2 } /* Literal.String.Backtick */
+.highlight-5667d0de-3874-4008-9cc0-f3ffd46c25ed .sc { color: #0086d2 } /* Literal.String.Char */
+.highlight-5667d0de-3874-4008-9cc0-f3ffd46c25ed .dl { color: #0086d2 } /* Literal.String.Delimiter */
+.highlight-5667d0de-3874-4008-9cc0-f3ffd46c25ed .sd { color: #0086d2 } /* Literal.String.Doc */
+.highlight-5667d0de-3874-4008-9cc0-f3ffd46c25ed .s2 { color: #0086d2 } /* Literal.String.Double */
+.highlight-5667d0de-3874-4008-9cc0-f3ffd46c25ed .se { color: #0086d2 } /* Literal.String.Escape */
+.highlight-5667d0de-3874-4008-9cc0-f3ffd46c25ed .sh { color: #0086d2 } /* Literal.String.Heredoc */
+.highlight-5667d0de-3874-4008-9cc0-f3ffd46c25ed .si { color: #0086d2 } /* Literal.String.Interpol */
+.highlight-5667d0de-3874-4008-9cc0-f3ffd46c25ed .sx { color: #0086d2 } /* Literal.String.Other */
+.highlight-5667d0de-3874-4008-9cc0-f3ffd46c25ed .sr { color: #0086d2 } /* Literal.String.Regex */
+.highlight-5667d0de-3874-4008-9cc0-f3ffd46c25ed .s1 { color: #0086d2 } /* Literal.String.Single */
+.highlight-5667d0de-3874-4008-9cc0-f3ffd46c25ed .ss { color: #0086d2 } /* Literal.String.Symbol */
+.highlight-5667d0de-3874-4008-9cc0-f3ffd46c25ed .bp { color: #ffffff } /* Name.Builtin.Pseudo */
+.highlight-5667d0de-3874-4008-9cc0-f3ffd46c25ed .fm { color: #ff0086; font-weight: bold } /* Name.Function.Magic */
+.highlight-5667d0de-3874-4008-9cc0-f3ffd46c25ed .vc { color: #fb660a } /* Name.Variable.Class */
+.highlight-5667d0de-3874-4008-9cc0-f3ffd46c25ed .vg { color: #fb660a } /* Name.Variable.Global */
+.highlight-5667d0de-3874-4008-9cc0-f3ffd46c25ed .vi { color: #fb660a } /* Name.Variable.Instance */
+.highlight-5667d0de-3874-4008-9cc0-f3ffd46c25ed .vm { color: #fb660a } /* Name.Variable.Magic */
+.highlight-5667d0de-3874-4008-9cc0-f3ffd46c25ed .il { color: #0086f7; font-weight: bold } /* Literal.Number.Integer.Long */
+  </style>
+  <h2>
+  </h2>
+  <div class="highlight-5667d0de-3874-4008-9cc0-f3ffd46c25ed" style="overflow: auto;height: 297px;border-radius: 10px;width: 60%;margin: auto;border: ;background: #1B1E3B;;box-shadow: rgba(0, 0, 0, 0.0) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;;">
+   <pre style="line-height: 120%;margin-top: 10px;margin-bottom: 10px;margin-left: 10px;margin-right: 10px;font-family: Ubuntu Mono;font-size: 12px;padding: 0;"><span></span><span class="k">def</span> <span class="nf">find_programs_format_html_code</span><span class="p">(</span><span class="n">program_param</span><span class="p">,</span> <span class="n">html_code</span><span class="p">):</span>
+
+    <span class="n">div_highlight_style</span> <span class="o">=</span>\
+        <span class="s2">"overflow: auto;"</span><span class="o">+</span>\
+        <span class="sa">f</span><span class="s2">"height: </span><span class="si">{</span><span class="n">program_param</span><span class="p">[</span><span class="s1">'box-height:'</span><span class="p">]</span><span class="si">}</span><span class="s2">;"</span><span class="o">+</span>\
+        <span class="sa">f</span><span class="s2">"border-radius: </span><span class="si">{</span><span class="n">program_param</span><span class="p">[</span><span class="s1">'box-border-radius:'</span><span class="p">]</span><span class="si">}</span><span class="s2">;"</span><span class="o">+</span>\
+        <span class="sa">f</span><span class="s2">"width: </span><span class="si">{</span><span class="n">program_param</span><span class="p">[</span><span class="s1">'box-width:'</span><span class="p">]</span><span class="si">}</span><span class="s2">;"</span><span class="o">+</span>\
+        <span class="s2">"margin: auto;"</span><span class="o">+</span>\
+        <span class="sa">f</span><span class="s2">"border: </span><span class="si">{</span><span class="n">program_param</span><span class="p">[</span><span class="s1">'box-border:'</span><span class="p">]</span><span class="si">}</span><span class="s2">;"</span><span class="o">+</span>\
+        <span class="sa">f</span><span class="s2">"background: </span><span class="si">{</span><span class="n">program_param</span><span class="p">[</span><span class="s1">'box-background:'</span><span class="p">]</span><span class="si">}</span><span class="s2">;"</span><span class="o">+</span>\
+        <span class="sa">f</span><span class="s2">"box-shadow: </span><span class="si">{</span><span class="n">program_param</span><span class="p">[</span><span class="s1">'box-shadow:'</span><span class="p">]</span><span class="si">}</span><span class="s2">;"</span>
+
+    <span class="n">td_linenos_style</span> <span class="o">=</span> <span class="s2">"td.linenos .normal-5667d0de-3874-4008-9cc0-f3ffd46c25ed {"</span><span class="o">+</span>\
+                        <span class="sa">f</span><span class="s2">"color: </span><span class="si">{</span><span class="n">program_param</span><span class="p">[</span><span class="s1">'number-color:'</span><span class="p">]</span><span class="si">}</span><span class="s2">;"</span><span class="o">+</span>\
+                        <span class="sa">f</span><span class="s2">"background-color: </span><span class="si">{</span><span class="n">program_param</span><span class="p">[</span><span class="s1">'number-background-color:'</span><span class="p">]</span><span class="si">}</span><span class="s2">;"</span><span class="o">+</span>\
+                        <span class="sa">f</span><span class="s2">"border: </span><span class="si">{</span><span class="n">program_param</span><span class="p">[</span><span class="s1">'number-border:'</span><span class="p">]</span><span class="si">}</span><span class="s2">;"</span><span class="o">+</span>\
+                        <span class="sa">f</span><span class="s2">"border-radius: </span><span class="si">{</span><span class="n">program_param</span><span class="p">[</span><span class="s1">'number-border-radius:'</span><span class="p">]</span><span class="si">}</span><span class="s2">;"</span><span class="o">+</span>\
+                        <span class="sa">f</span><span class="s2">"padding-left: </span><span class="si">{</span><span class="n">program_param</span><span class="p">[</span><span class="s1">'number-padding-left-right:'</span><span class="p">]</span><span class="si">}</span><span class="s2">;"</span><span class="o">+</span>\
+                        <span class="sa">f</span><span class="s2">"padding-right: </span><span class="si">{</span><span class="n">program_param</span><span class="p">[</span><span class="s1">'number-padding-left-right:'</span><span class="p">]</span><span class="si">}</span><span class="s2">;"</span><span class="o">+</span>\
+                        <span class="sa">f</span><span class="s2">"margin-left: </span><span class="si">{</span><span class="n">program_param</span><span class="p">[</span><span class="s1">'number-margin-left:'</span><span class="p">]</span><span class="si">}</span><span class="s2">;"</span><span class="o">+</span>\
+                        <span class="sa">f</span><span class="s2">"margin-right: </span><span class="si">{</span><span class="n">program_param</span><span class="p">[</span><span class="s1">'number-margin-right:'</span><span class="p">]</span><span class="si">}</span><span class="s2">;"</span><span class="o">+</span>\
+                        <span class="sa">f</span><span class="s2">"font-weight: </span><span class="si">{</span><span class="n">program_param</span><span class="p">[</span><span class="s1">'number-font-weight:'</span><span class="p">]</span><span class="si">}</span><span class="s2">;"</span><span class="o">+</span>\
+                        <span class="s2">"}"</span>
+
+    <span class="n">html_lignes</span> <span class="o">=</span> <span class="n">html_code</span><span class="o">.</span><span class="n">splitlines</span><span class="p">()</span>
+
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">ligne</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">html_lignes</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">ligne</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">'pre {'</span><span class="p">):</span>
+            <span class="k">del</span> <span class="n">html_lignes</span><span class="p">[:</span><span class="n">i</span><span class="p">]</span>
+            <span class="k">break</span>
+
+    <span class="n">html_lignes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"&lt;style&gt;"</span>
+
+    <span class="n">html_lignes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">td_linenos_style</span>
+    <span class="n">html_code</span> <span class="o">=</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">html_lignes</span><span class="p">)</span>
+
+    <span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">html_code</span><span class="p">,</span> <span class="s1">'html.parser'</span><span class="p">)</span>
+
+    <span class="n">highlight_div</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">'div'</span><span class="p">,</span> <span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">'class'</span><span class="p">:</span> <span class="s1">'highlight'</span><span class="p">})</span>
+
+    <span class="k">if</span> <span class="n">highlight_div</span><span class="p">:</span>
+        <span class="n">highlight_div</span><span class="p">[</span><span class="s1">'style'</span><span class="p">]</span> <span class="o">=</span> <span class="n">div_highlight_style</span>
+
+    <span class="n">html_code</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">prettify</span><span class="p">()</span>
+
+    <span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">html_code</span><span class="p">,</span> <span class="s1">'html.parser'</span><span class="p">)</span>
+
+    <span class="n">balises_pre</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s1">'pre'</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">balise</span> <span class="ow">in</span> <span class="n">balises_pre</span><span class="p">:</span>
+
+        <span class="n">balise</span><span class="p">[</span><span class="s1">'style'</span><span class="p">]</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"line-height: </span><span class="si">{</span><span class="n">program_param</span><span class="p">[</span><span class="s1">'box-line-height:'</span><span class="p">]</span><span class="si">}</span><span class="s2">;"</span><span class="o">+</span>\
+                            <span class="sa">f</span><span class="s2">"margin-top: </span><span class="si">{</span><span class="n">program_param</span><span class="p">[</span><span class="s1">'box-margin-top:'</span><span class="p">]</span><span class="si">}</span><span class="s2">;"</span><span class="o">+</span>\
+                            <span class="sa">f</span><span class="s2">"margin-bottom: </span><span class="si">{</span><span class="n">program_param</span><span class="p">[</span><span class="s1">'box-margin-bottom:'</span><span class="p">]</span><span class="si">}</span><span class="s2">;"</span><span class="o">+</span>\
+                            <span class="sa">f</span><span class="s2">"margin-left: </span><span class="si">{</span><span class="n">program_param</span><span class="p">[</span><span class="s1">'box-margin-left:'</span><span class="p">]</span><span class="si">}</span><span class="s2">;"</span><span class="o">+</span>\
+                            <span class="sa">f</span><span class="s2">"margin-right: </span><span class="si">{</span><span class="n">program_param</span><span class="p">[</span><span class="s1">'box-margin-right:'</span><span class="p">]</span><span class="si">}</span><span class="s2">;"</span><span class="o">+</span>\
+                            <span class="sa">f</span><span class="s2">"font-family: </span><span class="si">{</span><span class="n">program_param</span><span class="p">[</span><span class="s1">'box-font-family:'</span><span class="p">]</span><span class="si">}</span><span class="s2">;"</span><span class="o">+</span>\
+                            <span class="sa">f</span><span class="s2">"font-size: </span><span class="si">{</span><span class="n">program_param</span><span class="p">[</span><span class="s1">'box-font-size:'</span><span class="p">]</span><span class="si">}</span><span class="s2">;"</span><span class="o">+</span>\
+                            <span class="s2">"padding: 0;"</span>
+
+        <span class="k">if</span> <span class="n">program_param</span><span class="p">[</span><span class="s1">'number:'</span><span class="p">]</span> <span class="o">==</span> <span class="s1">'1'</span><span class="p">:</span>
+            <span class="n">balise</span><span class="p">[</span><span class="s1">'style'</span><span class="p">]</span> <span class="o">+=</span> <span class="s2">"width: max-content;"</span>
+
+    <span class="n">html_code</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">prettify</span><span class="p">()</span>
+
+    <span class="k">return</span><span class="p">(</span><span class="n">html_code</span><span class="p">)</span>
+</pre>
+  </div>
+  <!-- program>
+number: 0
+number-color:
+number-background-color:
+number-border:
+number-border-radius:
+number-padding-left-right:
+number-margin-left:
+number-margin-right:
+number-font-weight:
+box-background: #1B1E3B;
+box-border:
+box-border-radius: 10px
+box-shadow: rgba(0, 0, 0, 0.0) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+box-font-size: 12px
+box-font-family: Ubuntu Mono
+box-line-height: 120%
+box-width: 60%
+box-height: 297px
+box-margin-top: 10px
+box-margin-bottom: 10px
+box-margin-left: 10px
+box-margin-right: 10px
+language: python
+theme: fruity
+code: code_example_1.py
+<program -->
+  <p>
+   <br/>
+  </p>
+  <blockquote>
+   <blockquote>
+    <h4>
+     5 )
+    </h4>
+    <blockquote>
+     <p>
+      box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+      <br/>
+      box-font-size: 14px
+      <br/>
+      box-font-family: Outfit
+      <br/>
+      box-height: auto
+      <br/>
+      theme: nord
+     </p>
+    </blockquote>
+   </blockquote>
+  </blockquote>
+  <p>
+   <br/>
+  </p>
+  <div class="codehilite">
+   <pre><span></span><code><span class="n">number</span><span class="o">:</span><span class="w"> </span><span class="mi">0</span>
+<span class="n">number</span><span class="o">-</span><span class="n">color</span><span class="o">:</span>
+<span class="n">number</span><span class="o">-</span><span class="n">background</span><span class="o">-</span><span class="n">color</span><span class="o">:</span>
+<span class="n">number</span><span class="o">-</span><span class="n">border</span><span class="o">:</span>
+<span class="n">number</span><span class="o">-</span><span class="n">border</span><span class="o">-</span><span class="n">radius</span><span class="o">:</span>
+<span class="n">number</span><span class="o">-</span><span class="n">padding</span><span class="o">-</span><span class="n">left</span><span class="o">-</span><span class="n">right</span><span class="o">:</span>
+<span class="n">number</span><span class="o">-</span><span class="n">margin</span><span class="o">-</span><span class="n">left</span><span class="o">:</span>
+<span class="n">number</span><span class="o">-</span><span class="n">margin</span><span class="o">-</span><span class="n">right</span><span class="o">:</span>
+<span class="n">number</span><span class="o">-</span><span class="n">font</span><span class="o">-</span><span class="n">weight</span><span class="o">:</span>
+<span class="n">box</span><span class="o">-</span><span class="n">background</span><span class="o">:</span>
+<span class="n">box</span><span class="o">-</span><span class="n">border</span><span class="o">:</span>
+<span class="n">box</span><span class="o">-</span><span class="n">border</span><span class="o">-</span><span class="n">radius</span><span class="o">:</span><span class="w"> </span><span class="mi">25</span><span class="n">px</span>
+<span class="n">box</span><span class="o">-</span><span class="n">shadow</span><span class="o">:</span><span class="w"> </span><span class="n">rgba</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span><span class="w"> </span><span class="mi">0</span><span class="o">,</span><span class="w"> </span><span class="mi">0</span><span class="o">,</span><span class="w"> </span><span class="mf">0.4</span><span class="o">)</span><span class="w"> </span><span class="mi">0</span><span class="n">px</span><span class="w"> </span><span class="mi">2</span><span class="n">px</span><span class="w"> </span><span class="mi">4</span><span class="n">px</span><span class="o">,</span><span class="w"> </span><span class="n">rgba</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span><span class="w"> </span><span class="mi">0</span><span class="o">,</span><span class="w"> </span><span class="mi">0</span><span class="o">,</span><span class="w"> </span><span class="mf">0.3</span><span class="o">)</span><span class="w"> </span><span class="mi">0</span><span class="n">px</span><span class="w"> </span><span class="mi">7</span><span class="n">px</span><span class="w"> </span><span class="mi">13</span><span class="n">px</span><span class="w"> </span><span class="o">-</span><span class="mi">3</span><span class="n">px</span><span class="o">,</span><span class="w"> </span><span class="n">rgba</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span><span class="w"> </span><span class="mi">0</span><span class="o">,</span><span class="w"> </span><span class="mi">0</span><span class="o">,</span><span class="w"> </span><span class="mf">0.2</span><span class="o">)</span><span class="w"> </span><span class="mi">0</span><span class="n">px</span><span class="w"> </span><span class="o">-</span><span class="mi">3</span><span class="n">px</span><span class="w"> </span><span class="mi">0</span><span class="n">px</span><span class="w"> </span><span class="n">inset</span><span class="o">;</span>
+<span class="n">box</span><span class="o">-</span><span class="n">font</span><span class="o">-</span><span class="n">size</span><span class="o">:</span><span class="w"> </span><span class="mi">14</span><span class="n">px</span>
+<span class="n">box</span><span class="o">-</span><span class="n">font</span><span class="o">-</span><span class="n">family</span><span class="o">:</span><span class="w"> </span><span class="n">Outfit</span>
+<span class="n">box</span><span class="o">-</span><span class="n">line</span><span class="o">-</span><span class="n">height</span><span class="o">:</span><span class="w"> </span><span class="mi">110</span><span class="o">%</span>
+<span class="n">box</span><span class="o">-</span><span class="n">width</span><span class="o">:</span><span class="w"> </span><span class="mi">70</span><span class="o">%</span>
+<span class="n">box</span><span class="o">-</span><span class="n">height</span><span class="o">:</span><span class="w"> </span><span class="n">auto</span>
+<span class="n">box</span><span class="o">-</span><span class="n">margin</span><span class="o">-</span><span class="n">top</span><span class="o">:</span><span class="w"> </span><span class="mi">10</span><span class="n">px</span>
+<span class="n">box</span><span class="o">-</span><span class="n">margin</span><span class="o">-</span><span class="n">bottom</span><span class="o">:</span><span class="w"> </span><span class="mi">10</span><span class="n">px</span>
+<span class="n">box</span><span class="o">-</span><span class="n">margin</span><span class="o">-</span><span class="n">left</span><span class="o">:</span><span class="w"> </span><span class="mi">10</span><span class="n">px</span>
+<span class="n">box</span><span class="o">-</span><span class="n">margin</span><span class="o">-</span><span class="n">right</span><span class="o">:</span><span class="w"> </span><span class="mi">10</span><span class="n">px</span>
+<span class="n">language</span><span class="o">:</span><span class="w"> </span><span class="n">python</span>
+<span class="n">theme</span><span class="o">:</span><span class="w"> </span><span class="n">nord</span>
+<span class="n">code</span><span class="o">:</span><span class="w"> </span><span class="n">code_example_1</span><span class="o">.</span><span class="na">py</span>
+</code></pre>
+  </div>
+  <p>
+   <br/>
+  </p>
+  <style>
+   td.linenos .normal-40fe898d-3bb3-41b7-981b-951dc7586c08 {color: ;background-color: ;border: ;border-radius: ;padding-left: ;padding-right: ;margin-left: ;margin-right: ;font-weight: ;}
+span.linenos { color: #D8DEE9; background-color: #242933; padding-left: 5px; padding-right: 5px; }
+td.linenos .special { color: #242933; background-color: #D8DEE9; padding-left: 5px; padding-right: 5px; }
+span.linenos.special { color: #242933; background-color: #D8DEE9; padding-left: 5px; padding-right: 5px; }
+.highlight-40fe898d-3bb3-41b7-981b-951dc7586c08 .hll { background-color: #3B4252 }
+.highlight-40fe898d-3bb3-41b7-981b-951dc7586c08 { background: #2E3440; color: #d8dee9 }
+.highlight-40fe898d-3bb3-41b7-981b-951dc7586c08 .c { color: #616e87; font-style: italic } /* Comment */
+.highlight-40fe898d-3bb3-41b7-981b-951dc7586c08 .err { color: #bf616a } /* Error */
+.highlight-40fe898d-3bb3-41b7-981b-951dc7586c08 .esc { color: #d8dee9 } /* Escape */
+.highlight-40fe898d-3bb3-41b7-981b-951dc7586c08 .g { color: #d8dee9 } /* Generic */
+.highlight-40fe898d-3bb3-41b7-981b-951dc7586c08 .k { color: #81a1c1; font-weight: bold } /* Keyword */
+.highlight-40fe898d-3bb3-41b7-981b-951dc7586c08 .l { color: #d8dee9 } /* Literal */
+.highlight-40fe898d-3bb3-41b7-981b-951dc7586c08 .n { color: #d8dee9 } /* Name */
+.highlight-40fe898d-3bb3-41b7-981b-951dc7586c08 .o { color: #81a1c1; font-weight: bold } /* Operator */
+.highlight-40fe898d-3bb3-41b7-981b-951dc7586c08 .x { color: #d8dee9 } /* Other */
+.highlight-40fe898d-3bb3-41b7-981b-951dc7586c08 .p { color: #eceff4 } /* Punctuation */
+.highlight-40fe898d-3bb3-41b7-981b-951dc7586c08 .ch { color: #616e87; font-style: italic } /* Comment.Hashbang */
+.highlight-40fe898d-3bb3-41b7-981b-951dc7586c08 .cm { color: #616e87; font-style: italic } /* Comment.Multiline */
+.highlight-40fe898d-3bb3-41b7-981b-951dc7586c08 .cp { color: #5e81ac; font-style: italic } /* Comment.Preproc */
+.highlight-40fe898d-3bb3-41b7-981b-951dc7586c08 .cpf { color: #616e87; font-style: italic } /* Comment.PreprocFile */
+.highlight-40fe898d-3bb3-41b7-981b-951dc7586c08 .c1 { color: #616e87; font-style: italic } /* Comment.Single */
+.highlight-40fe898d-3bb3-41b7-981b-951dc7586c08 .cs { color: #616e87; font-style: italic } /* Comment.Special */
+.highlight-40fe898d-3bb3-41b7-981b-951dc7586c08 .gd { color: #bf616a } /* Generic.Deleted */
+.highlight-40fe898d-3bb3-41b7-981b-951dc7586c08 .ge { color: #d8dee9; font-style: italic } /* Generic.Emph */
+.highlight-40fe898d-3bb3-41b7-981b-951dc7586c08 .ges { color: #d8dee9; font-weight: bold; font-style: italic } /* Generic.EmphStrong */
+.highlight-40fe898d-3bb3-41b7-981b-951dc7586c08 .gr { color: #bf616a } /* Generic.Error */
+.highlight-40fe898d-3bb3-41b7-981b-951dc7586c08 .gh { color: #88c0d0; font-weight: bold } /* Generic.Heading */
+.highlight-40fe898d-3bb3-41b7-981b-951dc7586c08 .gi { color: #a3be8c } /* Generic.Inserted */
+.highlight-40fe898d-3bb3-41b7-981b-951dc7586c08 .go { color: #d8dee9 } /* Generic.Output */
+.highlight-40fe898d-3bb3-41b7-981b-951dc7586c08 .gp { color: #616e88; font-weight: bold } /* Generic.Prompt */
+.highlight-40fe898d-3bb3-41b7-981b-951dc7586c08 .gs { color: #d8dee9; font-weight: bold } /* Generic.Strong */
+.highlight-40fe898d-3bb3-41b7-981b-951dc7586c08 .gu { color: #88c0d0; font-weight: bold } /* Generic.Subheading */
+.highlight-40fe898d-3bb3-41b7-981b-951dc7586c08 .gt { color: #bf616a } /* Generic.Traceback */
+.highlight-40fe898d-3bb3-41b7-981b-951dc7586c08 .kc { color: #81a1c1; font-weight: bold } /* Keyword.Constant */
+.highlight-40fe898d-3bb3-41b7-981b-951dc7586c08 .kd { color: #81a1c1; font-weight: bold } /* Keyword.Declaration */
+.highlight-40fe898d-3bb3-41b7-981b-951dc7586c08 .kn { color: #81a1c1; font-weight: bold } /* Keyword.Namespace */
+.highlight-40fe898d-3bb3-41b7-981b-951dc7586c08 .kp { color: #81a1c1 } /* Keyword.Pseudo */
+.highlight-40fe898d-3bb3-41b7-981b-951dc7586c08 .kr { color: #81a1c1; font-weight: bold } /* Keyword.Reserved */
+.highlight-40fe898d-3bb3-41b7-981b-951dc7586c08 .kt { color: #81a1c1 } /* Keyword.Type */
+.highlight-40fe898d-3bb3-41b7-981b-951dc7586c08 .ld { color: #d8dee9 } /* Literal.Date */
+.highlight-40fe898d-3bb3-41b7-981b-951dc7586c08 .m { color: #b48ead } /* Literal.Number */
+.highlight-40fe898d-3bb3-41b7-981b-951dc7586c08 .s { color: #a3be8c } /* Literal.String */
+.highlight-40fe898d-3bb3-41b7-981b-951dc7586c08 .na { color: #8fbcbb } /* Name.Attribute */
+.highlight-40fe898d-3bb3-41b7-981b-951dc7586c08 .nb { color: #81a1c1 } /* Name.Builtin */
+.highlight-40fe898d-3bb3-41b7-981b-951dc7586c08 .nc { color: #8fbcbb } /* Name.Class */
+.highlight-40fe898d-3bb3-41b7-981b-951dc7586c08 .no { color: #8fbcbb } /* Name.Constant */
+.highlight-40fe898d-3bb3-41b7-981b-951dc7586c08 .nd { color: #d08770 } /* Name.Decorator */
+.highlight-40fe898d-3bb3-41b7-981b-951dc7586c08 .ni { color: #d08770 } /* Name.Entity */
+.highlight-40fe898d-3bb3-41b7-981b-951dc7586c08 .ne { color: #bf616a } /* Name.Exception */
+.highlight-40fe898d-3bb3-41b7-981b-951dc7586c08 .nf { color: #88c0d0 } /* Name.Function */
+.highlight-40fe898d-3bb3-41b7-981b-951dc7586c08 .nl { color: #d8dee9 } /* Name.Label */
+.highlight-40fe898d-3bb3-41b7-981b-951dc7586c08 .nn { color: #8fbcbb } /* Name.Namespace */
+.highlight-40fe898d-3bb3-41b7-981b-951dc7586c08 .nx { color: #d8dee9 } /* Name.Other */
+.highlight-40fe898d-3bb3-41b7-981b-951dc7586c08 .py { color: #d8dee9 } /* Name.Property */
+.highlight-40fe898d-3bb3-41b7-981b-951dc7586c08 .nt { color: #81a1c1 } /* Name.Tag */
+.highlight-40fe898d-3bb3-41b7-981b-951dc7586c08 .nv { color: #d8dee9 } /* Name.Variable */
+.highlight-40fe898d-3bb3-41b7-981b-951dc7586c08 .ow { color: #81a1c1; font-weight: bold } /* Operator.Word */
+.highlight-40fe898d-3bb3-41b7-981b-951dc7586c08 .pm { color: #eceff4 } /* Punctuation.Marker */
+.highlight-40fe898d-3bb3-41b7-981b-951dc7586c08 .w { color: #d8dee9 } /* Text.Whitespace */
+.highlight-40fe898d-3bb3-41b7-981b-951dc7586c08 .mb { color: #b48ead } /* Literal.Number.Bin */
+.highlight-40fe898d-3bb3-41b7-981b-951dc7586c08 .mf { color: #b48ead } /* Literal.Number.Float */
+.highlight-40fe898d-3bb3-41b7-981b-951dc7586c08 .mh { color: #b48ead } /* Literal.Number.Hex */
+.highlight-40fe898d-3bb3-41b7-981b-951dc7586c08 .mi { color: #b48ead } /* Literal.Number.Integer */
+.highlight-40fe898d-3bb3-41b7-981b-951dc7586c08 .mo { color: #b48ead } /* Literal.Number.Oct */
+.highlight-40fe898d-3bb3-41b7-981b-951dc7586c08 .sa { color: #a3be8c } /* Literal.String.Affix */
+.highlight-40fe898d-3bb3-41b7-981b-951dc7586c08 .sb { color: #a3be8c } /* Literal.String.Backtick */
+.highlight-40fe898d-3bb3-41b7-981b-951dc7586c08 .sc { color: #a3be8c } /* Literal.String.Char */
+.highlight-40fe898d-3bb3-41b7-981b-951dc7586c08 .dl { color: #a3be8c } /* Literal.String.Delimiter */
+.highlight-40fe898d-3bb3-41b7-981b-951dc7586c08 .sd { color: #616e87 } /* Literal.String.Doc */
+.highlight-40fe898d-3bb3-41b7-981b-951dc7586c08 .s2 { color: #a3be8c } /* Literal.String.Double */
+.highlight-40fe898d-3bb3-41b7-981b-951dc7586c08 .se { color: #ebcb8b } /* Literal.String.Escape */
+.highlight-40fe898d-3bb3-41b7-981b-951dc7586c08 .sh { color: #a3be8c } /* Literal.String.Heredoc */
+.highlight-40fe898d-3bb3-41b7-981b-951dc7586c08 .si { color: #a3be8c } /* Literal.String.Interpol */
+.highlight-40fe898d-3bb3-41b7-981b-951dc7586c08 .sx { color: #a3be8c } /* Literal.String.Other */
+.highlight-40fe898d-3bb3-41b7-981b-951dc7586c08 .sr { color: #ebcb8b } /* Literal.String.Regex */
+.highlight-40fe898d-3bb3-41b7-981b-951dc7586c08 .s1 { color: #a3be8c } /* Literal.String.Single */
+.highlight-40fe898d-3bb3-41b7-981b-951dc7586c08 .ss { color: #a3be8c } /* Literal.String.Symbol */
+.highlight-40fe898d-3bb3-41b7-981b-951dc7586c08 .bp { color: #81a1c1 } /* Name.Builtin.Pseudo */
+.highlight-40fe898d-3bb3-41b7-981b-951dc7586c08 .fm { color: #88c0d0 } /* Name.Function.Magic */
+.highlight-40fe898d-3bb3-41b7-981b-951dc7586c08 .vc { color: #d8dee9 } /* Name.Variable.Class */
+.highlight-40fe898d-3bb3-41b7-981b-951dc7586c08 .vg { color: #d8dee9 } /* Name.Variable.Global */
+.highlight-40fe898d-3bb3-41b7-981b-951dc7586c08 .vi { color: #d8dee9 } /* Name.Variable.Instance */
+.highlight-40fe898d-3bb3-41b7-981b-951dc7586c08 .vm { color: #d8dee9 } /* Name.Variable.Magic */
+.highlight-40fe898d-3bb3-41b7-981b-951dc7586c08 .il { color: #b48ead } /* Literal.Number.Integer.Long */
+  </style>
+  <h2>
+  </h2>
+  <div class="highlight-40fe898d-3bb3-41b7-981b-951dc7586c08" style="overflow: auto;height: auto;border-radius: 25px;width: 70%;margin: auto;border: ;background: ;box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;;">
+   <pre style="line-height: 110%;margin-top: 10px;margin-bottom: 10px;margin-left: 10px;margin-right: 10px;font-family: Outfit;font-size: 14px;padding: 0;"><span></span><span class="k">def</span> <span class="nf">find_programs_format_html_code</span><span class="p">(</span><span class="n">program_param</span><span class="p">,</span> <span class="n">html_code</span><span class="p">):</span>
+
+    <span class="n">div_highlight_style</span> <span class="o">=</span>\
+        <span class="s2">"overflow: auto;"</span><span class="o">+</span>\
+        <span class="sa">f</span><span class="s2">"height: </span><span class="si">{</span><span class="n">program_param</span><span class="p">[</span><span class="s1">'box-height:'</span><span class="p">]</span><span class="si">}</span><span class="s2">;"</span><span class="o">+</span>\
+        <span class="sa">f</span><span class="s2">"border-radius: </span><span class="si">{</span><span class="n">program_param</span><span class="p">[</span><span class="s1">'box-border-radius:'</span><span class="p">]</span><span class="si">}</span><span class="s2">;"</span><span class="o">+</span>\
+        <span class="sa">f</span><span class="s2">"width: </span><span class="si">{</span><span class="n">program_param</span><span class="p">[</span><span class="s1">'box-width:'</span><span class="p">]</span><span class="si">}</span><span class="s2">;"</span><span class="o">+</span>\
+        <span class="s2">"margin: auto;"</span><span class="o">+</span>\
+        <span class="sa">f</span><span class="s2">"border: </span><span class="si">{</span><span class="n">program_param</span><span class="p">[</span><span class="s1">'box-border:'</span><span class="p">]</span><span class="si">}</span><span class="s2">;"</span><span class="o">+</span>\
+        <span class="sa">f</span><span class="s2">"background: </span><span class="si">{</span><span class="n">program_param</span><span class="p">[</span><span class="s1">'box-background:'</span><span class="p">]</span><span class="si">}</span><span class="s2">;"</span><span class="o">+</span>\
+        <span class="sa">f</span><span class="s2">"box-shadow: </span><span class="si">{</span><span class="n">program_param</span><span class="p">[</span><span class="s1">'box-shadow:'</span><span class="p">]</span><span class="si">}</span><span class="s2">;"</span>
+
+    <span class="n">td_linenos_style</span> <span class="o">=</span> <span class="s2">"td.linenos .normal-40fe898d-3bb3-41b7-981b-951dc7586c08 {"</span><span class="o">+</span>\
+                        <span class="sa">f</span><span class="s2">"color: </span><span class="si">{</span><span class="n">program_param</span><span class="p">[</span><span class="s1">'number-color:'</span><span class="p">]</span><span class="si">}</span><span class="s2">;"</span><span class="o">+</span>\
+                        <span class="sa">f</span><span class="s2">"background-color: </span><span class="si">{</span><span class="n">program_param</span><span class="p">[</span><span class="s1">'number-background-color:'</span><span class="p">]</span><span class="si">}</span><span class="s2">;"</span><span class="o">+</span>\
+                        <span class="sa">f</span><span class="s2">"border: </span><span class="si">{</span><span class="n">program_param</span><span class="p">[</span><span class="s1">'number-border:'</span><span class="p">]</span><span class="si">}</span><span class="s2">;"</span><span class="o">+</span>\
+                        <span class="sa">f</span><span class="s2">"border-radius: </span><span class="si">{</span><span class="n">program_param</span><span class="p">[</span><span class="s1">'number-border-radius:'</span><span class="p">]</span><span class="si">}</span><span class="s2">;"</span><span class="o">+</span>\
+                        <span class="sa">f</span><span class="s2">"padding-left: </span><span class="si">{</span><span class="n">program_param</span><span class="p">[</span><span class="s1">'number-padding-left-right:'</span><span class="p">]</span><span class="si">}</span><span class="s2">;"</span><span class="o">+</span>\
+                        <span class="sa">f</span><span class="s2">"padding-right: </span><span class="si">{</span><span class="n">program_param</span><span class="p">[</span><span class="s1">'number-padding-left-right:'</span><span class="p">]</span><span class="si">}</span><span class="s2">;"</span><span class="o">+</span>\
+                        <span class="sa">f</span><span class="s2">"margin-left: </span><span class="si">{</span><span class="n">program_param</span><span class="p">[</span><span class="s1">'number-margin-left:'</span><span class="p">]</span><span class="si">}</span><span class="s2">;"</span><span class="o">+</span>\
+                        <span class="sa">f</span><span class="s2">"margin-right: </span><span class="si">{</span><span class="n">program_param</span><span class="p">[</span><span class="s1">'number-margin-right:'</span><span class="p">]</span><span class="si">}</span><span class="s2">;"</span><span class="o">+</span>\
+                        <span class="sa">f</span><span class="s2">"font-weight: </span><span class="si">{</span><span class="n">program_param</span><span class="p">[</span><span class="s1">'number-font-weight:'</span><span class="p">]</span><span class="si">}</span><span class="s2">;"</span><span class="o">+</span>\
+                        <span class="s2">"}"</span>
+
+    <span class="n">html_lignes</span> <span class="o">=</span> <span class="n">html_code</span><span class="o">.</span><span class="n">splitlines</span><span class="p">()</span>
+
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">ligne</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">html_lignes</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">ligne</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">'pre {'</span><span class="p">):</span>
+            <span class="k">del</span> <span class="n">html_lignes</span><span class="p">[:</span><span class="n">i</span><span class="p">]</span>
+            <span class="k">break</span>
+
+    <span class="n">html_lignes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"&lt;style&gt;"</span>
+
+    <span class="n">html_lignes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">td_linenos_style</span>
+    <span class="n">html_code</span> <span class="o">=</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">html_lignes</span><span class="p">)</span>
+
+    <span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">html_code</span><span class="p">,</span> <span class="s1">'html.parser'</span><span class="p">)</span>
+
+    <span class="n">highlight_div</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">'div'</span><span class="p">,</span> <span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">'class'</span><span class="p">:</span> <span class="s1">'highlight'</span><span class="p">})</span>
+
+    <span class="k">if</span> <span class="n">highlight_div</span><span class="p">:</span>
+        <span class="n">highlight_div</span><span class="p">[</span><span class="s1">'style'</span><span class="p">]</span> <span class="o">=</span> <span class="n">div_highlight_style</span>
+
+    <span class="n">html_code</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">prettify</span><span class="p">()</span>
+
+    <span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">html_code</span><span class="p">,</span> <span class="s1">'html.parser'</span><span class="p">)</span>
+
+    <span class="n">balises_pre</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s1">'pre'</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">balise</span> <span class="ow">in</span> <span class="n">balises_pre</span><span class="p">:</span>
+
+        <span class="n">balise</span><span class="p">[</span><span class="s1">'style'</span><span class="p">]</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"line-height: </span><span class="si">{</span><span class="n">program_param</span><span class="p">[</span><span class="s1">'box-line-height:'</span><span class="p">]</span><span class="si">}</span><span class="s2">;"</span><span class="o">+</span>\
+                            <span class="sa">f</span><span class="s2">"margin-top: </span><span class="si">{</span><span class="n">program_param</span><span class="p">[</span><span class="s1">'box-margin-top:'</span><span class="p">]</span><span class="si">}</span><span class="s2">;"</span><span class="o">+</span>\
+                            <span class="sa">f</span><span class="s2">"margin-bottom: </span><span class="si">{</span><span class="n">program_param</span><span class="p">[</span><span class="s1">'box-margin-bottom:'</span><span class="p">]</span><span class="si">}</span><span class="s2">;"</span><span class="o">+</span>\
+                            <span class="sa">f</span><span class="s2">"margin-left: </span><span class="si">{</span><span class="n">program_param</span><span class="p">[</span><span class="s1">'box-margin-left:'</span><span class="p">]</span><span class="si">}</span><span class="s2">;"</span><span class="o">+</span>\
+                            <span class="sa">f</span><span class="s2">"margin-right: </span><span class="si">{</span><span class="n">program_param</span><span class="p">[</span><span class="s1">'box-margin-right:'</span><span class="p">]</span><span class="si">}</span><span class="s2">;"</span><span class="o">+</span>\
+                            <span class="sa">f</span><span class="s2">"font-family: </span><span class="si">{</span><span class="n">program_param</span><span class="p">[</span><span class="s1">'box-font-family:'</span><span class="p">]</span><span class="si">}</span><span class="s2">;"</span><span class="o">+</span>\
+                            <span class="sa">f</span><span class="s2">"font-size: </span><span class="si">{</span><span class="n">program_param</span><span class="p">[</span><span class="s1">'box-font-size:'</span><span class="p">]</span><span class="si">}</span><span class="s2">;"</span><span class="o">+</span>\
+                            <span class="s2">"padding: 0;"</span>
+
+        <span class="k">if</span> <span class="n">program_param</span><span class="p">[</span><span class="s1">'number:'</span><span class="p">]</span> <span class="o">==</span> <span class="s1">'1'</span><span class="p">:</span>
+            <span class="n">balise</span><span class="p">[</span><span class="s1">'style'</span><span class="p">]</span> <span class="o">+=</span> <span class="s2">"width: max-content;"</span>
+
+    <span class="n">html_code</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">prettify</span><span class="p">()</span>
+
+    <span class="k">return</span><span class="p">(</span><span class="n">html_code</span><span class="p">)</span>
+</pre>
+  </div>
+  <!-- program>
+number: 0
+number-color:
+number-background-color:
+number-border:
+number-border-radius:
+number-padding-left-right:
+number-margin-left:
+number-margin-right:
+number-font-weight:
+box-background:
+box-border:
+box-border-radius: 25px
+box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+box-font-size: 14px
+box-font-family: Outfit
+box-line-height: 110%
+box-width: 70%
+box-height: auto
+box-margin-top: 10px
+box-margin-bottom: 10px
+box-margin-left: 10px
+box-margin-right: 10px
+language: python
+theme: nord
+code: code_example_1.py
+<program -->
+  <p>
+   <br/>
+  </p>
+ </body>
+ <script>
+  window.addEventListener('DOMContentLoaded', function() {
+var links = document.getElementsByTagName('a');
+for (var i = 0; i < links.length; i++) {
+links[i].addEventListener('click', function(event) {
+var link = event.target.href;
+if (link.includes('#')) {
+event.preventDefault();
+window.parent.postMessage({type: 'linkClicked', link: link}, '*');
+}
+});
+}
+});
+ </script>
+</html>

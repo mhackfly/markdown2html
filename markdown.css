@@ -1,0 +1,61 @@
+p {
+	color: #9AB8C7;
+}
+
+
+section { 
+	color: #595959;
+	font-family: "Outfit";
+	font-optical-sizing: auto;
+	font-weight: 700;
+	font-size: 24px;
+}
+
+h4 {
+	color: #006F00;
+	font-family: "Outfit";
+	font-optical-sizing: auto;
+	font-weight: 500;
+	font-size: 22px;
+}
+
+a {
+	font-size: 16px;
+	text-decoration: none;
+	color: #1B5478;
+	font-weight: 700;
+	font-style: italic;
+}
+
+img[alt=snakles_1] {
+	width: 190px;
+	border-top: 5px solid black;
+	border-bottom: 2px solid black;
+	border-left: 5px solid black;
+	border-right: 2px solid black;
+	border-radius: 10px;
+}
+
+img[alt=snakles_2] {
+	width: 190px;
+	border: 4px solid black;
+	border-radius: 10px;
+}
+
+blockquote {
+	margin-left: 25px;
+	color: #9AB8C7;
+}
+
+sm {
+	font-size: 10px;
+	color: gray;
+	font-style: italic;
+}
+
+code {
+	font-family: monospace;
+	font-size: 90%;
+	color: white;
+}
+
