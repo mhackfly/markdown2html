@@ -44,9 +44,9 @@ a code syntax highlighting tool.
 <br/>
 
 
-> [markdown2html.py](code_markdown2html_py.html): converts the Markdown file to HTML  
-> [markdown2html.css](code_markdown2html_css.html): defines the style of the HTML page  
-> [markdown.css](code_markdown_css.html): defines styles for the markdown file  
+> [markdown2html.py](example/code_markdown2html_py.html): converts the Markdown file to HTML  
+> [markdown2html.css](example/code_markdown2html_css.html): defines the style of the HTML page  
+> [markdown.css](example/code_markdown_css.html): defines styles for the markdown file  
 > <sm>(Theme code: Dracula)</sm>  
 
 <br/>
