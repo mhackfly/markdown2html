@@ -40,6 +40,7 @@ a syntax highlighting tool.
 - In the "tags" section, when specifying the `code` attribute, you can provide either an
 existing file name or if you want to write the code directly, you can do so as follows:
 
+```
 <!-- program>
 ...
 language: python
@@ -48,20 +49,24 @@ code:
 print("Hello")
 print("World!")
 <program -->
+```
 
 With the existing file:
 
+```
 <!-- program>
 ...
 language: js
 theme: github-dark
 code: script.js
 <program -->
+```
 
 **Examples**
 
 [micro66](https://www.micro66.fr/github/markdown2html/example/article.html)
 
+```
 <!-- program>
 number: 0
 number-color:
@@ -89,6 +94,7 @@ language: python
 theme: fruity
 code: code_example_1.py
 <program -->
+```
 
 In the "Examples" section, many attributes are listed without values.
 These attributes are optional and are used to customize the appearance of the code block.
@@ -96,4 +102,3 @@ If an attribute is not specified, the program will use default values.
 You can experiment with different values to achieve the desired look for your code block.
 
 Feel free to experiment with different values for your code block appearance! 😊
-
